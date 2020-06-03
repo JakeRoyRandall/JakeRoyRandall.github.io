@@ -1,0 +1,57 @@
+html {
+	overflow: hidden;
+	cursor: url(./images/cursor.png), auto;
+}
+
+body {
+	display: flex;
+	align-items: center;
+}
+
+#bigColor {
+    width: 100%; 
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+    transition: background-color 0.09s ease-in;
+}
+#textBody {
+    width: 50%;
+    margin-left: 10%;
+}
+
+#homeLinks {
+    font-size: 2.25rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: sofia-pro-soft, sans-serif;
+	font-weight: 600;
+	font-style: normal;
+    color: white;
+    font-size: 7.594rem;
+}
+
+h1 {font-weight: 400;}
+h2 {font-size: 5.063rem;}
+h3 {font-size: 3.375rem;}
+h4 {font-size: 2.25rem;}
+h5 {font-size: 1.5rem;}
+
+a {
+	font-family: sofia-pro, sans-serif;
+	font-weight: 600;
+	font-style: normal;
+	color: white;
+	margin-right: 30px;
+	text-decoration: none;
+	cursor: url(./images/cursor.png), auto;
+}
+
+
+.quote {
+	font-family: felt-tip-roman, serif;
+	font-weight: 800;
+}
