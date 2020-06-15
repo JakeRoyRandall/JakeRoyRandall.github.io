@@ -3,22 +3,22 @@ import { RoughNotation } from "react-rough-notation";
 import './Homepage.css';
 
 const loves = [
-  'I ❤️ Magic the Gathering'
+  'I ❤️ making new friends 👋'
 , 'I ❤️ competitive at-home Jeopardy'
-, 'I ❤️ ancient mythologies'
 , 'I ❤️ new music fridays'
 , 'I ❤️ obtuse philosophy'
-, 'I ❤️ being a Pathfinder nerd'
+, 'I ❤️ rolling for initiative'
 , 'I ❤️ my little sister'
-, 'I ❤️ biographies of genius'
-, 'I ❤️ chicken wings'
+, 'I ❤️ biographies'
+, 'I ❤️ crazy-hot chicken wings'
+, 'I ❤️ hiking lake Calavera 🌋'
 , 'I ❤️ Modest Mouse'
 , 'I ❤️ Good Eats'
-, 'I ❤️ Going to art museums'
-, 'I ❤️ Cards Against Humanity'
-, 'I ❤️ WTF with Marc Maron'
+, 'I ❤️ going to art museums'
+, 'I ❤️ TabNine for VS Code'
+, 'I ❤️ the Tim Ferriss Show'
 , 'I ❤️ finishing a good book'
-, 'I ❤️ brain breaking physics'
+, 'I ❤️ brain breaking physics 🤯'
 , 'I ❤️ watching Tiny Desk Concerts'
 , 'I ❤️ a creamy milk stout'
 , 'I ❤️ Friedrich Nietzsche'
@@ -27,29 +27,31 @@ const loves = [
 , 'I ❤️ biking in the city'
 , 'I ❤️ building with Legos'
 , 'I ❤️ trying new things'
+, 'I ❤️ tidy code'
 , 'I ❤️ Anthony Bourdain (RIP)'
 , 'I ❤️ the movie Amadeus'
-, 'I ❤️ fat stacks of cash'
 , 'I ❤️ Civilization by Sid Meier'
 , 'I ❤️ a medium rare rack of lamb'
 , 'I ❤️ sour & funky beers'
+, 'I ❤️ the poems of E.E. Cummings'
 , 'I ❤️ stand up comedy'
+, 'I ❤️ well commented code'
 , 'I ❤️ Led Zeppelin'
 , 'I ❤️ finding the right words'
 , 'I ❤️ a well matched debate'
 , 'I ❤️ films by Quentin Terantino'
-, 'I ❤️ chicken & waffles'
+, 'I ❤️ chicken & waffles'  
 , 'I ❤️ working with creative people'
 , 'I ❤️ watching TED talks'
 , 'I ❤️ discovering San Diego'
 , 'I ❤️ the XX'
+, 'I ❤️ straightforward API documentation'
 , 'I ❤️ the color yellow'
-, 'I ❤️ cryptozoology'
-, 'I ❤️ spicy tuna sushi'
+, 'I ❤️ Willy Wonka & the Chocolate Factory'
+, 'I ❤️ spicy tuna rolls 🍣'
 , 'I ❤️ Tyler the Creator'
 , 'I ❤️ crazy entrepreneurs'
-, 'I ❤️ YouTube University'
-, 'I ❤️ questioning authority'
+, 'I ❤️ YouTube University 🎓'
 , 'I ❤️ strong coffee'
 , 'I ❤️ the Strokes'
 , 'I ❤️ sriracha on hotdogs'
@@ -78,16 +80,24 @@ const colors = [
     , `#F4D759`, `#F3CD4F`, `#F1C246`
 ]
 
+// const learnStudentApp = "https://obscure-reaches-13754.herokuapp.com/"
+// const instaPoetBot= "https://insta-poet-bot.web.app/"
 class Homepage extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            color: `#F0B83C`,
+            color: colors[0],
             colorIndex: 0,
             love: `I ❤️ Magic the Gathering`,
             loveIndex: 0,
             lastTime: 0,
-            blogLine: false,
+            appsLine: false,
+            rubyLine: false,
+            pythonLine: false,
+            javascriptLine: false,
+            poetryLine: false,
+            sneakerLine: false,
+            projectsLine: false,
             githubLine: false,
             linkedInLine: false,
             resumeLine: false,
@@ -120,8 +130,26 @@ class Homepage extends Component {
         var randNumber = Math.floor(Math.random() * 3)
         var animation = animationTypes[randNumber]
         switch (element) {
-            case "blog":
-                this.setState({ blogLine: true, animationType: animation })
+            case "apps":
+                this.setState({ appsLine: true, animationType: animation })
+                break;
+            case "ruby":
+                this.setState({ rubyLine: true, animationType: animation })
+                break;
+            case "python":
+                this.setState({ pythonLine: true, animationType: animation })
+                break;
+            case "javascript":
+                this.setState({ javascriptLine: true, animationType: animation })
+                break;
+            case "poetry":
+                this.setState({ poetryLine: true, animationType: animation })
+                break;
+            case "sneaker":
+                this.setState({ sneakerLine: true, animationType: animation })
+                break;
+            case "projects":
+                this.setState({ projectsLine: true, animationType: animation })
                 break;
             case "github":
                 this.setState({ githubLine: true, animationType: animation })
@@ -142,19 +170,31 @@ class Homepage extends Component {
     }
 
     clearAnimation = () => {
-        this.setState({ 
-            blogLine: false, 
+        this.setState({
+            appsLine: false, 
+            rubyLine: false, 
+            pythonLine: false, 
+            javascriptLine: false, 
+            projectsLine: false, 
             githubLine: false, 
             linkedInLine: false, 
             resumeLine: false, 
-            contactLine: false
+            contactLine: false,
+            poetryLine: false,
+            sneakerLine: false,
         })
     }
 
     render() {
         const { color, 
-                love, 
-                blogLine, 
+                love,
+                appsLine,
+                rubyLine,
+                pythonLine,
+                javascriptLine,
+                poetryLine,
+                sneakerLine, 
+                projectsLine, 
                 githubLine, 
                 linkedInLine, 
                 resumeLine, 
@@ -164,56 +204,118 @@ class Homepage extends Component {
         return (
             <div id="bigColor" style={{ backgroundColor: color }} onMouseMove={ this.colorChange }>
                 <div id="textBody">
-                    <h1>hi i'm jake!</h1>
-                    <h4>I'm a fullstack developer living in sunny San Diego. Currently drinking too much coffee, learning Python, & getting excited about AI. Open to new projects & opportunities!</h4>
-                    <h4>{ love }</h4>
-                    <div id="homeLinks">
-                        <a  href="www.google.com" 
-                            onMouseEnter={() => this.randAnimation("blog")} 
-                            onMouseLeave={() => this.clearAnimation("blog")}>
-                            <RoughNotation type={ animationType } 
+                    <h1 id="hi">hi i'm jake!</h1>
+                    <h3>I'm a software engineer <span role="img" aria-label="man technologist">👨‍💻</span>
+                        &nbsp;living in <span role="img" aria-label="sun">☀️</span> San Diego. I make&nbsp;
+                        
+                        <a  href="/projects" target="_blank" className="bodyLinks"
+                            onMouseEnter={() => this.randAnimation("apps")} 
+                            onMouseLeave={() => this.clearAnimation()}>
+                            <RoughNotation type={ animationType === "circle" ? "underline" : "box" } 
                                 animationDuration="1200" 
-                                strokeWidth="3" 
-                                show={ blogLine }>
-                                    blog
+                                strokeWidth="4" 
+                                show={ appsLine }>
+                                    beautiful, functional apps
                             </RoughNotation>
                         </a>
-                        <a  href="https://github.com/JakeRoyRandall" target="_blank" rel="noopener noreferrer" 
+                        &nbsp;using&nbsp;
+                        <a  href="/projects" target="_blank" className="bodyLinks"
+                            onMouseEnter={() => this.randAnimation("ruby")} 
+                            onMouseLeave={() => this.clearAnimation()}>
+                            <RoughNotation type={ animationType } 
+                                animationDuration="1200" 
+                                strokeWidth="4" 
+                                show={ rubyLine }>
+                                    Ruby,&nbsp;
+                            </RoughNotation>
+                        </a>
+                        <a  href="/projects" target="_blank" className="bodyLinks"
+                            onMouseEnter={() => this.randAnimation("python")} 
+                            onMouseLeave={() => this.clearAnimation()}>
+                            <RoughNotation type={ animationType } 
+                                animationDuration="1200" 
+                                strokeWidth="4" 
+                                show={ pythonLine }>
+                                    Python,
+                            </RoughNotation>
+                        </a>
+                        &nbsp;&
+                        <a  href="/projects" target="_blank" className="homeLinks"
+                            onMouseEnter={() => this.randAnimation("javascript")} 
+                            onMouseLeave={() => this.clearAnimation()}>
+                            <RoughNotation type={ animationType } 
+                                animationDuration="1200" 
+                                strokeWidth="4" 
+                                show={ javascriptLine }>
+                                    &nbsp;Javascript.
+                            </RoughNotation>
+                        </a><br/><br/>
+                        In my free time I teach <span role="img" aria-label="robot face">🤖</span> to&nbsp;
+                        <a  href="https://insta-poet-bot.web.app/" target="_blank" 
+                            rel="noopener noreferrer" className="bodyLinks" onMouseEnter={() => this.randAnimation("poetry")} onMouseLeave={() => this.clearAnimation("poetry")}>
+                            <RoughNotation type={ animationType === "circle" ? "underline" : "box"} animationDuration="1000" strokeWidth="4" show={ poetryLine }>
+                                    write poetry
+                            </RoughNotation>
+                        </a><br/>&&nbsp;
+                        <a  href="https://insta-poet-bot.web.app/" target="_blank" 
+                            rel="noopener noreferrer" className="bodyLinks" onMouseEnter={() => this.randAnimation("sneaker")} onMouseLeave={() => this.clearAnimation("sneaker")}>
+                            <RoughNotation type={ animationType === "circle" ? "underline" : "box"} animationDuration="1000" strokeWidth="4" show={ sneakerLine }>
+                            trade sneakers
+                            </RoughNotation>
+                        </a>&nbsp;in a plot for 🌎 domination.
+                    </h3>
+                    <h3>{ love }</h3>
+                    <div id="homeLinks">
+                        <a  href="/projects" target="_blank" className="homeLinks"
+                            onMouseEnter={() => this.randAnimation("projects")} 
+                            onMouseLeave={() => this.clearAnimation("projects")}>
+                            <RoughNotation type={ animationType } 
+                                animationDuration="1200" 
+                                strokeWidth="4" 
+                                show={ projectsLine }>
+                                    projects
+                            </RoughNotation>
+                        </a>
+                        <a  href="https://github.com/JakeRoyRandall" target="_blank" 
+                            rel="noopener noreferrer" className="homeLinks"
                             onMouseEnter={() => this.randAnimation("github")}
                             onMouseLeave={() => this.clearAnimation("github")}>
                             <RoughNotation type={ animationType } 
                                 animationDuration="1200" 
-                                strokeWidth="3" 
+                                strokeWidth="4" 
                                 show={ githubLine }>
                                     github
                             </RoughNotation>
                         </a>
-                        <a  href="https://www.linkedin.com/in/jake-r-randall" target="_blank" rel="noopener noreferrer" 
+                        <a  href="https://www.linkedin.com/in/jake-r-randall" target="_blank" 
+                            rel="noopener noreferrer" className="homeLinks"
                             onMouseEnter={() => this.randAnimation("linkedIn")} 
                             onMouseLeave={() => this.clearAnimation("linkedIn")}>
                             <RoughNotation type={ animationType }
                                 animationDuration="1200" 
-                                strokeWidth="3"  
+                                strokeWidth="4"  
                                 show={ linkedInLine }>
                                     linkedIn
                             </RoughNotation>
                         </a>
-                        <a  href="/JakeRandallResume.pdf" target="_blank"
+                        <a  href="./JakeRandallResume.pdf" target="_blank"
+                            className="homeLinks"
                             onMouseEnter={() => this.randAnimation("resume")}
                             onMouseLeave={() => this.clearAnimation("resume")}>
                             <RoughNotation type={ animationType }
                                 animationDuration="1200" 
-                                strokeWidth="3" 
+                                strokeWidth="4" 
                                 show={ resumeLine }>
                                     resume
                             </RoughNotation>
                         </a>
-                        <a  href="mailto:hello@jakerandall.me?subject=Website%20Contact" target="_blank" rel="noopener noreferrer"
+                        <a  href="mailto:hello@jakerandall.me?subject=Website%20Contact" target="_blank"
+                            rel="noopener noreferrer" className="homeLinks"
                             onMouseEnter={() => this.randAnimation("contact")}
                             onMouseLeave={() => this.clearAnimation("contact")}>
                             <RoughNotation type={ animationType }
                                 animationDuration="1200" 
-                                strokeWidth="3" 
+                                strokeWidth="4" 
                                 show={ contactLine} >
                                     contact
                             </RoughNotation>
