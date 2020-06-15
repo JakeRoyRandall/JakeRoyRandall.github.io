@@ -2,62 +2,87 @@ import React, { Component } from 'react';
 import { RoughNotation } from "react-rough-notation";
 import './Homepage.css';
 
+const techs = [
+     'React'
+    ,'AWS Elastic Beanstalk'
+    ,'Ruby'
+    ,'Bootstrap'
+    ,'MongoDB'
+    ,'Firebase'
+    ,'Javascript'
+    ,'Github'
+    ,'TensorFlow'
+    ,'AWS Dynamo DB'
+    ,'HTML5 & CSS3'
+    ,'Flask'
+    ,'Ruby-on-Rails'
+    ,'Material-UI'
+    ,'Python'
+    ,'Postgres'
+    ,'Gatsby.js'
+    ,'PHP'
+    ,'AWS RDS'
+    ,'Google Cloud Compute'
+    ,'Docker'
+    ,'jQuery'
+]
+
 const loves = [
-  'I ❤️ making new friends 👋'
-, 'I ❤️ competitive at-home Jeopardy'
-, 'I ❤️ new music fridays'
-, 'I ❤️ obtuse philosophy'
-, 'I ❤️ rolling for initiative'
-, 'I ❤️ my little sister'
-, 'I ❤️ biographies'
-, 'I ❤️ crazy-hot chicken wings'
-, 'I ❤️ hiking lake Calavera 🌋'
-, 'I ❤️ Modest Mouse'
-, 'I ❤️ Good Eats'
-, 'I ❤️ going to art museums'
-, 'I ❤️ TabNine for VS Code'
-, 'I ❤️ the Tim Ferriss Show'
-, 'I ❤️ finishing a good book'
-, 'I ❤️ brain breaking physics 🤯'
-, 'I ❤️ watching Tiny Desk Concerts'
-, 'I ❤️ a creamy milk stout'
-, 'I ❤️ Friedrich Nietzsche'
-, 'I ❤️ failing fast'
-, 'I ❤️ the Beatles'
-, 'I ❤️ biking in the city'
-, 'I ❤️ building with Legos'
-, 'I ❤️ trying new things'
-, 'I ❤️ tidy code'
-, 'I ❤️ Anthony Bourdain (RIP)'
-, 'I ❤️ the movie Amadeus'
-, 'I ❤️ Civilization by Sid Meier'
-, 'I ❤️ a medium rare rack of lamb'
-, 'I ❤️ sour & funky beers'
-, 'I ❤️ the poems of E.E. Cummings'
-, 'I ❤️ stand up comedy'
-, 'I ❤️ well commented code'
-, 'I ❤️ Led Zeppelin'
-, 'I ❤️ finding the right words'
-, 'I ❤️ a well matched debate'
-, 'I ❤️ films by Quentin Terantino'
-, 'I ❤️ chicken & waffles'  
-, 'I ❤️ working with creative people'
-, 'I ❤️ watching TED talks'
-, 'I ❤️ discovering San Diego'
-, 'I ❤️ the XX'
-, 'I ❤️ straightforward API documentation'
-, 'I ❤️ the color yellow'
-, 'I ❤️ Willy Wonka & the Chocolate Factory'
-, 'I ❤️ spicy tuna rolls 🍣'
-, 'I ❤️ Tyler the Creator'
-, 'I ❤️ crazy entrepreneurs'
-, 'I ❤️ YouTube University 🎓'
-, 'I ❤️ strong coffee'
-, 'I ❤️ the Strokes'
-, 'I ❤️ sriracha on hotdogs'
-, 'I ❤️ paintings by Dali'
-, 'I ❤️ (insert something interesting here)'
-, 'I ❤️ a well designed UX'
+    'I ❤️ making new friends 👋'
+    , 'I ❤️ competitive at-home Jeopardy'
+    , 'I ❤️ new music fridays'
+    , 'I ❤️ obtuse philosophy'
+    , 'I ❤️ rolling for initiative'
+    , 'I ❤️ my little sister'
+    , 'I ❤️ biographies'
+    , 'I ❤️ crazy-hot chicken wings'
+    , 'I ❤️ hiking lake Calavera 🌋'
+    , 'I ❤️ Modest Mouse'
+    , 'I ❤️ Good Eats'
+    , 'I ❤️ going to art museums'
+    , 'I ❤️ TabNine for VS Code'
+    , 'I ❤️ the Tim Ferriss Show'
+    , 'I ❤️ finishing a good book'
+    , 'I ❤️ brain breaking physics 🤯'
+    , 'I ❤️ watching Tiny Desk Concerts'
+    , 'I ❤️ a creamy milk stout'
+    , 'I ❤️ Friedrich Nietzsche'
+    , 'I ❤️ failing fast'
+    , 'I ❤️ the Beatles'
+    , 'I ❤️ biking in the city'
+    , 'I ❤️ building with Legos'
+    , 'I ❤️ trying new things'
+    , 'I ❤️ tidy code'
+    , 'I ❤️ Anthony Bourdain (RIP)'
+    , 'I ❤️ the movie Amadeus'
+    , 'I ❤️ Civilization by Sid Meier'
+    , 'I ❤️ a medium rare rack of lamb'
+    , 'I ❤️ sour & funky beers'
+    , 'I ❤️ the poems of E.E. Cummings'
+    , 'I ❤️ stand up comedy'
+    , 'I ❤️ well commented code'
+    , 'I ❤️ Led Zeppelin'
+    , 'I ❤️ finding the right words'
+    , 'I ❤️ a well matched debate'
+    , 'I ❤️ films by Quentin Terantino'
+    , 'I ❤️ chicken & waffles'  
+    , 'I ❤️ working with creative people'
+    , 'I ❤️ watching TED talks'
+    , 'I ❤️ discovering San Diego'
+    , 'I ❤️ the XX'
+    , 'I ❤️ straightforward API documentation'
+    , 'I ❤️ the color yellow'
+    , 'I ❤️ Willy Wonka & the Chocolate Factory'
+    , 'I ❤️ spicy tuna rolls 🍣'
+    , 'I ❤️ Tyler the Creator'
+    , 'I ❤️ crazy entrepreneurs'
+    , 'I ❤️ YouTube University 🎓'
+    , 'I ❤️ strong coffee'
+    , 'I ❤️ the Strokes'
+    , 'I ❤️ sriracha on hotdogs'
+    , 'I ❤️ paintings by Dali'
+    , 'I ❤️ (insert something interesting here)'
+    , 'I ❤️ a well designed UX'
 ]
 
 const colors = [
@@ -88,7 +113,9 @@ class Homepage extends Component {
         this.state = {
             color: colors[0],
             colorIndex: 0,
-            love: `I ❤️ Magic the Gathering`,
+            tech: techs[0],
+            techIndex: 0,
+            love: loves[0],
             loveIndex: 0,
             lastTime: 0,
             appsLine: false,
@@ -107,17 +134,21 @@ class Homepage extends Component {
     }
 
     colorChange = () => {
-        var { colorIndex, loveIndex, lastTime } = this.state
+        var { colorIndex, techIndex, loveIndex, lastTime } = this.state
         var curTime = new Date().valueOf()
         if (curTime - 250 >= lastTime) {
             lastTime = new Date().valueOf()
             colorIndex = colorIndex + 1
             if (colorIndex >= colors.length) { colorIndex = 0 }
+            techIndex = techIndex + 1
+            if (techIndex >= techs.length) { techIndex = 0 }
             loveIndex = loveIndex + 1
             if (loveIndex >= loves.length) { loveIndex = 0 }
             this.setState({ 
                 color: colors[colorIndex], 
                 colorIndex: colorIndex,
+                tech: techs[techIndex],
+                techIndex: techIndex,
                 love: loves[loveIndex],
                 loveIndex: loveIndex,
                 lastTime: lastTime
@@ -186,7 +217,8 @@ class Homepage extends Component {
     }
 
     render() {
-        const { color, 
+        const { color,
+                tech,
                 love,
                 appsLine,
                 rubyLine,
@@ -207,7 +239,6 @@ class Homepage extends Component {
                     <h1 id="hi">hi i'm jake!</h1>
                     <h3>I'm a software engineer <span role="img" aria-label="man technologist">👨‍💻</span>
                         &nbsp;living in <span role="img" aria-label="sun">☀️</span> San Diego. I make&nbsp;
-                        
                         <a  href="/projects" target="_blank" className="bodyLinks"
                             onMouseEnter={() => this.randAnimation("apps")} 
                             onMouseLeave={() => this.clearAnimation()}>
@@ -218,38 +249,7 @@ class Homepage extends Component {
                                     beautiful, functional apps
                             </RoughNotation>
                         </a>
-                        &nbsp;using&nbsp;
-                        <a  href="/projects" target="_blank" className="bodyLinks"
-                            onMouseEnter={() => this.randAnimation("ruby")} 
-                            onMouseLeave={() => this.clearAnimation()}>
-                            <RoughNotation type={ animationType } 
-                                animationDuration="1200" 
-                                strokeWidth="4" 
-                                show={ rubyLine }>
-                                    Ruby,&nbsp;
-                            </RoughNotation>
-                        </a>
-                        <a  href="/projects" target="_blank" className="bodyLinks"
-                            onMouseEnter={() => this.randAnimation("python")} 
-                            onMouseLeave={() => this.clearAnimation()}>
-                            <RoughNotation type={ animationType } 
-                                animationDuration="1200" 
-                                strokeWidth="4" 
-                                show={ pythonLine }>
-                                    Python,
-                            </RoughNotation>
-                        </a>
-                        &nbsp;&
-                        <a  href="/projects" target="_blank" className="homeLinks"
-                            onMouseEnter={() => this.randAnimation("javascript")} 
-                            onMouseLeave={() => this.clearAnimation()}>
-                            <RoughNotation type={ animationType } 
-                                animationDuration="1200" 
-                                strokeWidth="4" 
-                                show={ javascriptLine }>
-                                    &nbsp;Javascript.
-                            </RoughNotation>
-                        </a><br/><br/>
+                        &nbsp;using modern technologies including: { tech }<br/><br/>
                         In my free time I teach <span role="img" aria-label="robot face">🤖</span> to&nbsp;
                         <a  href="https://insta-poet-bot.web.app/" target="_blank" 
                             rel="noopener noreferrer" className="bodyLinks" onMouseEnter={() => this.randAnimation("poetry")} onMouseLeave={() => this.clearAnimation("poetry")}>
