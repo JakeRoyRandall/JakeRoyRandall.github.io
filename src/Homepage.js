@@ -25,6 +25,7 @@ const techs = [
     ,'Google Cloud Compute'
     ,'Docker'
     ,'jQuery'
+    ,'SQL'
 ]
 
 const loves = [
@@ -49,7 +50,7 @@ const loves = [
     , 'I ❤️ Friedrich Nietzsche'
     , 'I ❤️ failing fast'
     , 'I ❤️ the Beatles'
-    , 'I ❤️ biking in the city'
+    , 'I ❤️ biking in the city 🚴‍♂️'
     , 'I ❤️ building with Legos'
     , 'I ❤️ trying new things'
     , 'I ❤️ tidy code'
@@ -57,22 +58,22 @@ const loves = [
     , 'I ❤️ the movie Amadeus'
     , 'I ❤️ Civilization by Sid Meier'
     , 'I ❤️ a medium rare rack of lamb'
-    , 'I ❤️ sour & funky beers'
+    , 'I ❤️ sour & funky beers 🍻'
     , 'I ❤️ the poems of E.E. Cummings'
     , 'I ❤️ stand up comedy'
     , 'I ❤️ well commented code'
     , 'I ❤️ Led Zeppelin'
+    , 'I ❤️ Willy Wonka & the 🍫 Factory'
     , 'I ❤️ finding the right words'
     , 'I ❤️ a well matched debate'
     , 'I ❤️ films by Quentin Terantino'
     , 'I ❤️ chicken & waffles'  
-    , 'I ❤️ working with creative people'
+    , 'I ❤️ working with creative people 👩‍🎨'
     , 'I ❤️ watching TED talks'
     , 'I ❤️ discovering San Diego'
     , 'I ❤️ the XX'
     , 'I ❤️ straightforward API documentation'
     , 'I ❤️ the color yellow'
-    , 'I ❤️ Willy Wonka & the Chocolate Factory'
     , 'I ❤️ spicy tuna rolls 🍣'
     , 'I ❤️ Tyler the Creator'
     , 'I ❤️ crazy entrepreneurs'
@@ -246,7 +247,7 @@ class Homepage extends Component {
                                 animationDuration="1200" 
                                 strokeWidth="4" 
                                 show={ appsLine }>
-                                    beautiful, functional apps
+                                    <span class="nobreak">beautiful, functional apps</span>
                             </RoughNotation>
                         </a>
                         &nbsp;using modern technologies including: { tech }<br/><br/>
@@ -254,13 +255,13 @@ class Homepage extends Component {
                         <a  href="https://insta-poet-bot.web.app/" target="_blank" 
                             rel="noopener noreferrer" className="bodyLinks" onMouseEnter={() => this.randAnimation("poetry")} onMouseLeave={() => this.clearAnimation("poetry")}>
                             <RoughNotation type={ animationType === "circle" ? "underline" : "box"} animationDuration="1000" strokeWidth="4" show={ poetryLine }>
-                                    write poetry
+                            <span class="nobreak">write poetry&nbsp;</span>
                             </RoughNotation>
-                        </a><br/>&&nbsp;
+                        </a>&&nbsp;
                         <a  href="https://insta-poet-bot.web.app/" target="_blank" 
                             rel="noopener noreferrer" className="bodyLinks" onMouseEnter={() => this.randAnimation("sneaker")} onMouseLeave={() => this.clearAnimation("sneaker")}>
                             <RoughNotation type={ animationType === "circle" ? "underline" : "box"} animationDuration="1000" strokeWidth="4" show={ sneakerLine }>
-                            trade sneakers
+                            <span class="nobreak">trade sneakers</span>
                             </RoughNotation>
                         </a>&nbsp;in a plot for 🌎 domination.
                     </h3>

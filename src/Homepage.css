@@ -14,7 +14,7 @@
     -webkit-font-smoothing: antialiased;
 }
 #textBody {
-    width: 50%;
+    width: 52%;
     height: 90vh;
     max-width: 1200px;
     display: flex;
@@ -33,7 +33,7 @@ h1, h2, h3, h4, h5, h6 {
 	font-weight: 600;
 	font-style: normal;
     color: white;
-    font-size: 7vh;
+    font-size: 9vh;
     /* font-size: 6.375rem; */
 }
 
@@ -73,4 +73,8 @@ h5 {font-size: 1.5rem;}
 .quote {
 	font-family: felt-tip-roman, serif;
 	font-weight: 800;
+}
+
+.nobreak {
+    white-space: nowrap;
 }
