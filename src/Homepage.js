@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { RoughNotation } from "react-rough-notation";
-import './Homepage.css';
+import './app.css';
 
 const techs = [
      'React'
-    ,'AWS Elastic Beanstalk'
+    ,'AWS'
     ,'Ruby'
     ,'Bootstrap'
     ,'MongoDB'
@@ -22,7 +22,7 @@ const techs = [
     ,'Gatsby.js'
     ,'PHP'
     ,'AWS RDS'
-    ,'Google Cloud Compute'
+    ,'Google Cloud'
     ,'Docker'
     ,'jQuery'
     ,'SQL'
@@ -119,6 +119,7 @@ class Homepage extends Component {
             love: loves[0],
             loveIndex: 0,
             lastTime: 0,
+            projectsModal: false,
             appsLine: false,
             rubyLine: false,
             pythonLine: false,
@@ -130,6 +131,12 @@ class Homepage extends Component {
             linkedInLine: false,
             resumeLine: false,
             contactLine: false,
+            closeLine: false,
+            lspLine: false,
+            ipbLine: false,
+            crsLine: false,
+            battleLine: false,
+            siteLine: false,
             animationType: "underline"
         }
     }
@@ -195,10 +202,27 @@ class Homepage extends Component {
             case "contact":
                 this.setState({ contactLine: true, animationType: animation })
                 break;
+            case "close":
+                this.setState({ closeLine: true, animationType: animation })
+                break;
+            case "lsp":
+                this.setState({ lspLine: true, animationType: animation })
+                break;
+            case "ipb":
+                this.setState({ ipbLine: true, animationType: animation })
+                break;
+            case "crs":
+                this.setState({ crsLine: true, animationType: animation })
+                break;
+            case "battle":
+                this.setState({ battleLine: true, animationType: animation })
+                break;
+            case "site":
+                this.setState({ siteLine: true, animationType: animation })
+                break;
             default:
                 this.setState({ animationType: animation})
         }
-
     }
 
     clearAnimation = () => {
@@ -207,24 +231,33 @@ class Homepage extends Component {
             rubyLine: false, 
             pythonLine: false, 
             javascriptLine: false, 
-            projectsLine: false, 
+            projectsLine: false,
             githubLine: false, 
             linkedInLine: false, 
             resumeLine: false, 
             contactLine: false,
             poetryLine: false,
             sneakerLine: false,
+            closeLine: false,
+            lspLine: false,
+            ipbLine: false,
+            crsLine: false,
+            battleLine: false,
+            siteLine: false,
         })
+    }
+
+    modalSwitch = () => {
+        this.clearAnimation()
+        this.setState({projectsModal: !this.state.projectsModal})
     }
 
     render() {
         const { color,
                 tech,
                 love,
+                projectsModal,
                 appsLine,
-                rubyLine,
-                pythonLine,
-                javascriptLine,
                 poetryLine,
                 sneakerLine, 
                 projectsLine, 
@@ -232,14 +265,21 @@ class Homepage extends Component {
                 linkedInLine, 
                 resumeLine, 
                 contactLine, 
+                closeLine,
+                lspLine,
+                ipbLine,
+                crsLine,
+                battleLine,
+                siteLine,
                 animationType } = this.state
 
         return (
-            <div id="bigColor" style={{ backgroundColor: color }} onMouseMove={ this.colorChange }>
-                <div id="textBody">
-                    <h1 id="hi">hi i'm jake!</h1>
-                    <h3>I'm a software engineer <span role="img" aria-label="man technologist">👨‍💻</span>
-                        &nbsp;living in <span role="img" aria-label="sun">☀️</span> San Diego. I make&nbsp;
+            <div className="background" style={{ backgroundColor: color }} onMouseMove={ this.colorChange }>
+                { !projectsModal && 
+                <div className="container">
+                    <h1 className="heading">hi i'm jake!</h1>
+                    <p className="text">I'm a software engineer <span role="img" aria-label="man technologist">👨‍💻 </span>
+                        living in <span role="img" aria-label="sun">☀️</span> San Diego. I make
                         <a  href="/projects" target="_blank" className="bodyLinks"
                             onMouseEnter={() => this.randAnimation("apps")} 
                             onMouseLeave={() => this.clearAnimation()}>
@@ -247,29 +287,29 @@ class Homepage extends Component {
                                 animationDuration="1200" 
                                 strokeWidth="4" 
                                 show={ appsLine }>
-                                    <span class="nobreak">beautiful, functional apps</span>
+                                    <span className="nobreak"> beautiful, functional apps </span>
                             </RoughNotation>
                         </a>
-                        &nbsp;using modern technologies including: { tech }<br/><br/>
-                        In my free time I teach <span role="img" aria-label="robot face">🤖</span> to&nbsp;
+                        using modern technologies including: { tech }<br/><br/>
+                        In my free time I teach <span role="img" aria-label="robot face">🤖</span> to
                         <a  href="https://insta-poet-bot.web.app/" target="_blank" 
                             rel="noopener noreferrer" className="bodyLinks" onMouseEnter={() => this.randAnimation("poetry")} onMouseLeave={() => this.clearAnimation("poetry")}>
                             <RoughNotation type={ animationType === "circle" ? "underline" : "box"} animationDuration="1000" strokeWidth="4" show={ poetryLine }>
-                            <span class="nobreak">write poetry&nbsp;</span>
+                            <span className="nobreak"> write poetry </span>
                             </RoughNotation>
-                        </a>&&nbsp;
+                        </a>&
                         <a  href="https://insta-poet-bot.web.app/" target="_blank" 
                             rel="noopener noreferrer" className="bodyLinks" onMouseEnter={() => this.randAnimation("sneaker")} onMouseLeave={() => this.clearAnimation("sneaker")}>
                             <RoughNotation type={ animationType === "circle" ? "underline" : "box"} animationDuration="1000" strokeWidth="4" show={ sneakerLine }>
-                            <span class="nobreak">trade sneakers</span>
+                            <span className="nobreak"> trade sneakers </span>
                             </RoughNotation>
-                        </a>&nbsp;in a plot for 🌎 domination.
-                    </h3>
-                    <h3>{ love }</h3>
-                    <div id="homeLinks">
-                        <a  href="/projects" target="_blank" className="homeLinks"
+                        </a>in a plot for 🌎 domination.
+                    </p>
+                    <p>{ love }</p>
+                    <div className="nav">
+                        <a  onClick={ this.modalSwitch } className="nav"
                             onMouseEnter={() => this.randAnimation("projects")} 
-                            onMouseLeave={() => this.clearAnimation("projects")}>
+                            onMouseLeave={() => this.clearAnimation()}>
                             <RoughNotation type={ animationType } 
                                 animationDuration="1200" 
                                 strokeWidth="4" 
@@ -278,9 +318,9 @@ class Homepage extends Component {
                             </RoughNotation>
                         </a>
                         <a  href="https://github.com/JakeRoyRandall" target="_blank" 
-                            rel="noopener noreferrer" className="homeLinks"
+                            rel="noopener noreferrer" className="nav"
                             onMouseEnter={() => this.randAnimation("github")}
-                            onMouseLeave={() => this.clearAnimation("github")}>
+                            onMouseLeave={() => this.clearAnimation()}>
                             <RoughNotation type={ animationType } 
                                 animationDuration="1200" 
                                 strokeWidth="4" 
@@ -289,9 +329,9 @@ class Homepage extends Component {
                             </RoughNotation>
                         </a>
                         <a  href="https://www.linkedin.com/in/jake-r-randall" target="_blank" 
-                            rel="noopener noreferrer" className="homeLinks"
+                            rel="noopener noreferrer" className="nav"
                             onMouseEnter={() => this.randAnimation("linkedIn")} 
-                            onMouseLeave={() => this.clearAnimation("linkedIn")}>
+                            onMouseLeave={() => this.clearAnimation()}>
                             <RoughNotation type={ animationType }
                                 animationDuration="1200" 
                                 strokeWidth="4"  
@@ -300,9 +340,9 @@ class Homepage extends Component {
                             </RoughNotation>
                         </a>
                         <a  href="./JakeRandallResume.pdf" target="_blank"
-                            className="homeLinks"
+                            className="nav"
                             onMouseEnter={() => this.randAnimation("resume")}
-                            onMouseLeave={() => this.clearAnimation("resume")}>
+                            onMouseLeave={() => this.clearAnimation()}>
                             <RoughNotation type={ animationType }
                                 animationDuration="1200" 
                                 strokeWidth="4" 
@@ -311,9 +351,9 @@ class Homepage extends Component {
                             </RoughNotation>
                         </a>
                         <a  href="mailto:hello@jakerandall.me?subject=Website%20Contact" target="_blank"
-                            rel="noopener noreferrer" className="homeLinks"
+                            rel="noopener noreferrer" className="nav"
                             onMouseEnter={() => this.randAnimation("contact")}
-                            onMouseLeave={() => this.clearAnimation("contact")}>
+                            onMouseLeave={() => this.clearAnimation()}>
                             <RoughNotation type={ animationType }
                                 animationDuration="1200" 
                                 strokeWidth="4" 
@@ -322,8 +362,88 @@ class Homepage extends Component {
                             </RoughNotation>
                         </a>
                     </div>
-                </div>
-            </div>
+                </div>}
+                { projectsModal && 
+            <div className="projects">
+                <h1 className="heading">my projects</h1>
+                <a  onClick={ this.modalSwitch } className="nav"
+                    onMouseEnter={() => this.randAnimation("close")} 
+                    onMouseLeave={() => this.clearAnimation()}
+                    style={{ display:"flex" }}>
+                    {/* style={{ display:"flex", justifyContent:"flex-end" }}>   */}
+                    <RoughNotation type={ animationType } 
+                        animationDuration="1200" 
+                        strokeWidth="4" 
+                        show={ closeLine }>
+                            close
+                    </RoughNotation>
+                </a>
+                <a  className="nav"
+                    onMouseEnter={() => this.randAnimation("lsp")} 
+                    onMouseLeave={() => this.clearAnimation()}
+                    style={{ display:"flex" }}>
+                    <RoughNotation type={ animationType } 
+                        animationDuration="1200" 
+                        strokeWidth="4" 
+                        show={ lspLine }>
+                            learn student platform
+                    </RoughNotation>
+                </a>
+                <a  className="nav"
+                    onMouseEnter={() => this.randAnimation("ipb")} 
+                    onMouseLeave={() => this.clearAnimation()}
+                    style={{ display:"flex" }}>
+                    <RoughNotation type={ animationType } 
+                        animationDuration="1200" 
+                        strokeWidth="4" 
+                        show={ ipbLine }>
+                            Insta-Poet-Bot
+                    </RoughNotation>
+                </a>
+                <a  className="nav"
+                    onMouseEnter={() => this.randAnimation("crs")} 
+                    onMouseLeave={() => this.clearAnimation()}
+                    style={{ display:"flex" }}>
+                    <RoughNotation type={ animationType } 
+                        animationDuration="1200" 
+                        strokeWidth="4" 
+                        show={ crsLine }>
+                            Cool Robot Syndicate
+                    </RoughNotation>
+                </a>
+                <a  className="nav"
+                    onMouseEnter={() => this.randAnimation("battle")} 
+                    onMouseLeave={() => this.clearAnimation()}
+                    style={{ display:"flex" }}>
+                    <RoughNotation type={ animationType } 
+                        animationDuration="1200" 
+                        strokeWidth="4" 
+                        show={ battleLine }>
+                            Battleship
+                    </RoughNotation>
+                </a>
+                <a  className="nav"
+                    onMouseEnter={() => this.randAnimation("site")} 
+                    onMouseLeave={() => this.clearAnimation()}
+                    style={{ display:"flex" }}>
+                    <RoughNotation type={ animationType } 
+                        animationDuration="1200" 
+                        strokeWidth="4" 
+                        show={ siteLine }>
+                            This Site
+                    </RoughNotation>
+                </a>
+
+                {/* <Tilt className="Tilt projects" 
+                options={{ max : 13, perspective : 1300, speed : 1300, scale : 1.05}}
+                style={{display : "flex", justifyContent : "center"}}>
+                    <div>
+                    <p style={{ color: color }}>LEARN Student Platform</p>
+                    <p style={{ color: "black" }}>lorem ipsum dolor sit amet</p>
+                    </div>
+                </Tilt> */}
+            </div> }
+        </div>
         )
     }
 }

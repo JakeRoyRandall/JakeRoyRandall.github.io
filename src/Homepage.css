@@ -1,6 +1,5 @@
 #bigColor {
     overflow: scroll;
-    overflow-x: hidden;
     cursor: url(./images/cursor.png), auto;
     display: flex;
     justify-content: center;
@@ -14,9 +13,12 @@
     -webkit-font-smoothing: antialiased;
 }
 #textBody {
-    width: 52%;
+    /* width: 52%; */
+    width: 872px;
     height: 90vh;
     max-width: 1200px;
+    /* max-width: 872px; */
+    min-width: 736px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -34,15 +36,9 @@ h1, h2, h3, h4, h5, h6 {
 	font-style: normal;
     color: white;
     font-size: 9vh;
-    /* font-size: 6.375rem; */
 }
 
-/* h1 {font-weight: 600;} */
-/* h2 {font-size: 5.063rem;} */
-/* h3 {font-size: 3.375rem;} */
 h3 {font-size: 4.5vh;}
-h4 {font-size: 2.25rem;}
-h5 {font-size: 1.5rem;}
 
 #homeLinks {
     margin-top: 3vh;
@@ -77,4 +73,22 @@ h5 {font-size: 1.5rem;}
 
 .nobreak {
     white-space: nowrap;
+}
+
+.projects {
+    background-color: white;
+    height: 160px;
+    max-height: 20%;
+}
+
+#projects {
+    /* width: 52%; */
+    width: 872px;
+    height: 90vh;
+    max-width: 1200px;
+    /* max-width: 872px; */
+    min-width: 736px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
