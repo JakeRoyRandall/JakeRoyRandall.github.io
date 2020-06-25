@@ -137,13 +137,25 @@ class Homepage extends Component {
             crsLine: false,
             battleLine: false,
             siteLine: false,
-            animationType: "underline"
+            animationType: "underline",
+            hoverEnabled: true,
         }
     }
 
+    componentDidMount = () => {
+        let hoverEnabled
+        window.matchMedia("(hover: hover)").matches ? hoverEnabled = true : hoverEnabled = false
+        !hoverEnabled && this.goWild()
+        this.setState({hoverEnabled: hoverEnabled})
+    }
+
+    goWild = () => {
+        window.setInterval(this.colorChange, 1000);
+    }
+
     colorChange = () => {
-        var { colorIndex, techIndex, loveIndex, lastTime } = this.state
-        var curTime = new Date().valueOf()
+        let { colorIndex, techIndex, loveIndex, lastTime } = this.state
+        let curTime = new Date().valueOf()
         if (curTime - 250 >= lastTime) {
             lastTime = new Date().valueOf()
             colorIndex = colorIndex + 1
@@ -165,63 +177,65 @@ class Homepage extends Component {
     }
 
     randAnimation = (element) => {
-        const animationTypes = ["underline", "box", "circle"]
-        var randNumber = Math.floor(Math.random() * 3)
-        var animation = animationTypes[randNumber]
-        switch (element) {
-            case "apps":
-                this.setState({ appsLine: true, animationType: animation })
-                break;
-            case "ruby":
-                this.setState({ rubyLine: true, animationType: animation })
-                break;
-            case "python":
-                this.setState({ pythonLine: true, animationType: animation })
-                break;
-            case "javascript":
-                this.setState({ javascriptLine: true, animationType: animation })
-                break;
-            case "poetry":
-                this.setState({ poetryLine: true, animationType: animation })
-                break;
-            case "sneaker":
-                this.setState({ sneakerLine: true, animationType: animation })
-                break;
-            case "projects":
-                this.setState({ projectsLine: true, animationType: animation })
-                break;
-            case "github":
-                this.setState({ githubLine: true, animationType: animation })
-                break;
-            case "linkedIn":
-                this.setState({ linkedInLine: true, animationType: animation })
-                break;
-            case "resume":
-                this.setState({ resumeLine: true, animationType: animation })
-                break;
-            case "contact":
-                this.setState({ contactLine: true, animationType: animation })
-                break;
-            case "close":
-                this.setState({ closeLine: true, animationType: animation })
-                break;
-            case "lsp":
-                this.setState({ lspLine: true, animationType: animation })
-                break;
-            case "ipb":
-                this.setState({ ipbLine: true, animationType: animation })
-                break;
-            case "crs":
-                this.setState({ crsLine: true, animationType: animation })
-                break;
-            case "battle":
-                this.setState({ battleLine: true, animationType: animation })
-                break;
-            case "site":
-                this.setState({ siteLine: true, animationType: animation })
-                break;
-            default:
-                this.setState({ animationType: animation})
+        if (this.state.hoverEnabled) {
+            let animationTypes = ["underline", "box", "circle"]
+            let randNumber = Math.floor(Math.random() * 3)
+            let animation = animationTypes[randNumber]
+            switch (element) {
+                case "apps":
+                    this.setState({ appsLine: true, animationType: animation })
+                    break;
+                case "ruby":
+                    this.setState({ rubyLine: true, animationType: animation })
+                    break;
+                case "python":
+                    this.setState({ pythonLine: true, animationType: animation })
+                    break;
+                case "javascript":
+                    this.setState({ javascriptLine: true, animationType: animation })
+                    break;
+                case "poetry":
+                    this.setState({ poetryLine: true, animationType: animation })
+                    break;
+                case "sneaker":
+                    this.setState({ sneakerLine: true, animationType: animation })
+                    break;
+                case "projects":
+                    this.setState({ projectsLine: true, animationType: animation })
+                    break;
+                case "github":
+                    this.setState({ githubLine: true, animationType: animation })
+                    break;
+                case "linkedIn":
+                    this.setState({ linkedInLine: true, animationType: animation })
+                    break;
+                case "resume":
+                    this.setState({ resumeLine: true, animationType: animation })
+                    break;
+                case "contact":
+                    this.setState({ contactLine: true, animationType: animation })
+                    break;
+                case "close":
+                    this.setState({ closeLine: true, animationType: animation })
+                    break;
+                case "lsp":
+                    this.setState({ lspLine: true, animationType: animation })
+                    break;
+                case "ipb":
+                    this.setState({ ipbLine: true, animationType: animation })
+                    break;
+                case "crs":
+                    this.setState({ crsLine: true, animationType: animation })
+                    break;
+                case "battle":
+                    this.setState({ battleLine: true, animationType: animation })
+                    break;
+                case "site":
+                    this.setState({ siteLine: true, animationType: animation })
+                    break;
+                default:
+                    this.setState({ animationType: animation})
+            }
         }
     }
 
@@ -285,7 +299,7 @@ class Homepage extends Component {
                             onMouseLeave={() => this.clearAnimation()}>
                             <RoughNotation type={ animationType === "circle" ? "underline" : "box" } 
                                 animationDuration="1200" 
-                                strokeWidth="4" 
+                                strokeWidth="4"
                                 show={ appsLine }>
                                     <span className="nobreak"> beautiful, functional apps </span>
                             </RoughNotation>
@@ -312,7 +326,8 @@ class Homepage extends Component {
                             onMouseLeave={() => this.clearAnimation()}>
                             <RoughNotation type={ animationType } 
                                 animationDuration="1200" 
-                                strokeWidth="4" 
+                                strokeWidth="4"
+                                padding="7"
                                 show={ projectsLine }>
                                     projects
                             </RoughNotation>
@@ -323,7 +338,8 @@ class Homepage extends Component {
                             onMouseLeave={() => this.clearAnimation()}>
                             <RoughNotation type={ animationType } 
                                 animationDuration="1200" 
-                                strokeWidth="4" 
+                                strokeWidth="4"
+                                padding="7"
                                 show={ githubLine }>
                                     github
                             </RoughNotation>
@@ -334,7 +350,8 @@ class Homepage extends Component {
                             onMouseLeave={() => this.clearAnimation()}>
                             <RoughNotation type={ animationType }
                                 animationDuration="1200" 
-                                strokeWidth="4"  
+                                strokeWidth="4"
+                                padding="7"
                                 show={ linkedInLine }>
                                     linkedIn
                             </RoughNotation>
@@ -345,7 +362,8 @@ class Homepage extends Component {
                             onMouseLeave={() => this.clearAnimation()}>
                             <RoughNotation type={ animationType }
                                 animationDuration="1200" 
-                                strokeWidth="4" 
+                                strokeWidth="4"
+                                padding="7" 
                                 show={ resumeLine }>
                                     resume
                             </RoughNotation>
@@ -356,7 +374,8 @@ class Homepage extends Component {
                             onMouseLeave={() => this.clearAnimation()}>
                             <RoughNotation type={ animationType }
                                 animationDuration="1200" 
-                                strokeWidth="4" 
+                                strokeWidth="4"
+                                padding="7"
                                 show={ contactLine} >
                                     contact
                             </RoughNotation>

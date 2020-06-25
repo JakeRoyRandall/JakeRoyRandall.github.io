@@ -12,10 +12,6 @@
     transition: background-color 0.09s ease-in;
     -webkit-font-smoothing: antialiased;}
 
-a {
-    color: inherit;
-    text-decoration: inherit;} 
-
 .container {
     display: flex;
     flex-direction: column;
@@ -30,6 +26,15 @@ a {
 .nav {
     display: flex;
     justify-content: space-between;}
+
+a {
+    color: inherit;
+    text-decoration: inherit;} 
+
+    /* .quote {
+font-family: felt-tip-roman, serif;
+font-weight: 800;
+} */
 
 /* Most Phones || 0px (0em) > 768px (48em) */
 @media (max-device-width: 767px) and (orientation: landscape){
@@ -72,8 +77,8 @@ a {
         align-items: center;
     }}
 
-/* Most Tablets || 768px (48em) > 1024px (64em) */
-@media (min-device-width: 48em) and (max-device-width: 64em) and (orientation: landscape){
+/* Most Tablets || 768px (48em) > 1376px (86em) */
+@media (min-device-width: 48em) and (max-device-width: 86em) and (orientation: landscape){
     .container {
         height: 90vh;
         width: 90vw;
@@ -101,7 +106,7 @@ a {
     }}
 
 /* CSS to "Force" Landscape Orientation */
-@media (min-device-width: 48em) and (max-device-width: 64em) and (orientation: portrait) {
+@media (min-device-width: 48em) and (max-device-width: 86em) and (orientation: portrait) {
     .background {
         transform: rotate(-90deg);
         transform-origin: left top;
@@ -133,35 +138,12 @@ a {
         margin-bottom: 0em;
     }}
 
-/* Some Laptops || 1024px (64em) <-> 1360x (85em) */
-@media (min-device-width: calc(64em + 1px)) and (max-device-width: 85em) {
+/* laptops || 1376px (86em) > 1920px (120em) > 2240px (140em) */
+@media (min-device-width: 86em) {
     .container {
+        max-width: 1140px;
         height: 90vh;
         width: 80vw;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        margin-left: 1em;
-        margin-right: 1em;
-        font-size: 4vw;
-    }
-
-    .heading {
-        font-size: 6vw;
-        margin-top: .15em;
-        margin-bottom: .15em;
-    }
-
-    .text {
-        margin-top: 0em;
-        margin-bottom: 0em;
-    }}
-
-@media (min-device-width: 85em) {
-    .container {
-        height: 90vh;
-        width: 80vw;
-        max-width: 1220px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -184,32 +166,13 @@ a {
     .nobreak {
         white-space: nowrap;
     }}
-    
-@media (min-device-width: calc(120em - 1px)) {
+
+@media (min-device-width: 120em) {
+    .container { max-width: 1220px; }}
+
+@media (min-device-width: 140em) {
     .container { max-width: 1600px; }}
 
+/* 4k displays || 2880px */
 @media (min-device-width: 180em) {
     .container { max-width: 2400px; }}
-
-/* .quote {
-	font-family: felt-tip-roman, serif;
-	font-weight: 800;
-} */
-
-/* .projects {
-    background-color: white;
-    height: 160px;
-    max-height: 20%;
-} */
-
-/* width: 52%; */
-/* max-width: 872px; */
-/* .projects {
-    width: 872px;
-    height: 90vh;
-    max-width: 1200px;
-    min-width: 736px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-} */
