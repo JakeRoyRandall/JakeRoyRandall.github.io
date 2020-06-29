@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
-import { RoughNotation } from "react-rough-notation";
 import './app.css';
+import { RoughNotation } from 'react-rough-notation';
+import LSP from './lsp'
+import IPB from './ipb'
+import CRS from './crs'
+import Battleship from './battleship'
+import Personal from './personal'
 
 const techs = [
      'React'
@@ -139,18 +144,46 @@ class Homepage extends Component {
             siteLine: false,
             animationType: "underline",
             hoverEnabled: true,
+            element: 1,
+            project: null,
         }
     }
 
     componentDidMount = () => {
         let hoverEnabled
         window.matchMedia("(hover: hover)").matches ? hoverEnabled = true : hoverEnabled = false
-        !hoverEnabled && this.goWild()
+        !hoverEnabled && window.setInterval(this.goWild, 800)
         this.setState({hoverEnabled: hoverEnabled})
     }
 
     goWild = () => {
-        window.setInterval(this.colorChange, 1000);
+        let { colorIndex, techIndex, loveIndex, element } = this.state
+        if (element % 3 === 1) {
+            colorIndex = colorIndex + 1
+            if (colorIndex >= colors.length) { colorIndex = 0 }
+            this.setState({ 
+                color: colors[colorIndex], 
+                colorIndex: colorIndex,
+                element: element + 1})
+        }
+        
+        else if (element % 3 === 2) {
+            techIndex = techIndex + 1
+            if (techIndex >= techs.length) { techIndex = 0 }
+            this.setState({ 
+                tech: techs[techIndex],
+                techIndex: techIndex,
+                element: element + 1})
+        }
+        
+        else if (element % 3 === 0) {
+            loveIndex = loveIndex + 1
+            if (loveIndex >= loves.length) { loveIndex = 0 }
+            this.setState({ 
+                love: loves[loveIndex],
+                loveIndex: loveIndex,
+                element: element + 1})
+        }
     }
 
     colorChange = () => {
@@ -266,6 +299,9 @@ class Homepage extends Component {
         this.setState({projectsModal: !this.state.projectsModal})
     }
 
+    projectView = (project) => {
+        this.setState({project: project})
+    }
     render() {
         const { color,
                 tech,
@@ -321,61 +357,56 @@ class Homepage extends Component {
                     </p>
                     <p>{ love }</p>
                     <div className="nav">
-                        <a  onClick={ this.modalSwitch } className="nav"
-                            onMouseEnter={() => this.randAnimation("projects")} 
+                        <span  onClick={ this.modalSwitch }
+                            onMouseOver={() => this.randAnimation("projects")} 
                             onMouseLeave={() => this.clearAnimation()}>
                             <RoughNotation type={ animationType } 
                                 animationDuration="1200" 
                                 strokeWidth="4"
-                                padding="7"
                                 show={ projectsLine }>
                                     projects
                             </RoughNotation>
-                        </a>
+                        </span>
                         <a  href="https://github.com/JakeRoyRandall" target="_blank" 
                             rel="noopener noreferrer" className="nav"
-                            onMouseEnter={() => this.randAnimation("github")}
+                            onMouseOver={() => this.randAnimation("github")}
                             onMouseLeave={() => this.clearAnimation()}>
                             <RoughNotation type={ animationType } 
                                 animationDuration="1200" 
                                 strokeWidth="4"
-                                padding="7"
                                 show={ githubLine }>
                                     github
                             </RoughNotation>
                         </a>
                         <a  href="https://www.linkedin.com/in/jake-r-randall" target="_blank" 
                             rel="noopener noreferrer" className="nav"
-                            onMouseEnter={() => this.randAnimation("linkedIn")} 
+                            onMouseOver={() => this.randAnimation("linkedIn")} 
                             onMouseLeave={() => this.clearAnimation()}>
                             <RoughNotation type={ animationType }
                                 animationDuration="1200" 
                                 strokeWidth="4"
-                                padding="7"
                                 show={ linkedInLine }>
                                     linkedIn
                             </RoughNotation>
                         </a>
                         <a  href="./JakeRandallResume.pdf" target="_blank"
                             className="nav"
-                            onMouseEnter={() => this.randAnimation("resume")}
+                            onMouseOver={() => this.randAnimation("resume")}
                             onMouseLeave={() => this.clearAnimation()}>
                             <RoughNotation type={ animationType }
                                 animationDuration="1200" 
                                 strokeWidth="4"
-                                padding="7" 
                                 show={ resumeLine }>
                                     resume
                             </RoughNotation>
                         </a>
                         <a  href="mailto:hello@jakerandall.me?subject=Website%20Contact" target="_blank"
                             rel="noopener noreferrer" className="nav"
-                            onMouseEnter={() => this.randAnimation("contact")}
+                            onMouseOver={() => this.randAnimation("contact")}
                             onMouseLeave={() => this.clearAnimation()}>
                             <RoughNotation type={ animationType }
                                 animationDuration="1200" 
                                 strokeWidth="4"
-                                padding="7"
                                 show={ contactLine} >
                                     contact
                             </RoughNotation>
@@ -383,84 +414,91 @@ class Homepage extends Component {
                     </div>
                 </div>}
                 { projectsModal && 
-            <div className="projects">
-                <h1 className="heading">my projects</h1>
-                <a  onClick={ this.modalSwitch } className="nav"
-                    onMouseEnter={() => this.randAnimation("close")} 
-                    onMouseLeave={() => this.clearAnimation()}
-                    style={{ display:"flex" }}>
-                    {/* style={{ display:"flex", justifyContent:"flex-end" }}>   */}
+            <div className="container">
+                <div>
+                <p className="heading">
+                    <RoughNotation 
+                        type="underline"
+                        animationDuration="1800" 
+                        strokeWidth="7" 
+                        show="true">
+                            My Favorite Projects
+                    </RoughNotation>
+                </p>
+                <div className="projects">
+                    <span  className="nobreak"
+                        onClick={() => this.projectView("lsp")}
+                        onMouseOver={() => this.randAnimation("lsp")} 
+                        onMouseLeave={() => this.clearAnimation()}>
+                        <RoughNotation type={ animationType === "circle" ? "underline" : "box" } 
+                            animationDuration="1200" 
+                            strokeWidth="4" 
+                            show={ lspLine }>
+                                learn student platform
+                        </RoughNotation>
+                    </span>
+                    <span  className="nobreak"
+                        onClick={() => this.projectView("ipb") }
+                        onMouseOver={() => this.randAnimation("ipb")} 
+                        onMouseLeave={() => this.clearAnimation()}>
+                        <RoughNotation type={ animationType === "circle" ? "underline" : "box" } 
+                            animationDuration="1200" 
+                            strokeWidth="4" 
+                            show={ ipbLine }>
+                                Insta-Poet-Bot
+                        </RoughNotation>
+                    </span>
+                    {/* <span  className=""
+                        onClick={() => this.projectView("crs") }
+                        onMouseOver={() => this.randAnimation("crs")} 
+                        onMouseLeave={() => this.clearAnimation()}>
+                        <RoughNotation type={ animationType === "circle" ? "underline" : "box" } 
+                            animationDuration="1200" 
+                            strokeWidth="4" 
+                            show={ crsLine }>
+                                Cool Robot Syndicate
+                        </RoughNotation>
+                    </span>
+                    <span  className=""
+                        onClick={() => this.projectView("battleship") }
+                        onMouseOver={() => this.randAnimation("battleship")} 
+                        onMouseLeave={() => this.clearAnimation()}>
+                        <RoughNotation type={ animationType === "circle" ? "underline" : "box" } 
+                            animationDuration="1200" 
+                            strokeWidth="4" 
+                            show={ battleLine }>
+                                Battleship
+                        </RoughNotation>
+                    </span> */}
+                    <span  className=""
+                        onClick={() => this.projectView("site") }
+                        onMouseOver={() => this.randAnimation("site")} 
+                        onMouseLeave={() => this.clearAnimation()}>
+                        <RoughNotation type={ animationType === "circle" ? "underline" : "box" } 
+                            animationDuration="1200" 
+                            strokeWidth="4" 
+                            show={ siteLine }>
+                                This Site
+                        </RoughNotation>
+                    </span> 
+                </div>
+                    </div>
+                    {this.state.project === "lsp" && <LSP />}
+                    {this.state.project === "ipb" && <IPB />}
+                    {this.state.project === "crs" && <CRS />}
+                    {this.state.project === "battleship" && <Battleship />}
+                    {this.state.project === "site" && <Personal />}
+                <span  
+                    onClick={ this.modalSwitch }
+                    onMouseOver={() => this.randAnimation("close")} 
+                    onMouseLeave={() => this.clearAnimation()}>
                     <RoughNotation type={ animationType } 
                         animationDuration="1200" 
                         strokeWidth="4" 
                         show={ closeLine }>
-                            close
+                            back
                     </RoughNotation>
-                </a>
-                <a  className="nav"
-                    onMouseEnter={() => this.randAnimation("lsp")} 
-                    onMouseLeave={() => this.clearAnimation()}
-                    style={{ display:"flex" }}>
-                    <RoughNotation type={ animationType } 
-                        animationDuration="1200" 
-                        strokeWidth="4" 
-                        show={ lspLine }>
-                            learn student platform
-                    </RoughNotation>
-                </a>
-                <a  className="nav"
-                    onMouseEnter={() => this.randAnimation("ipb")} 
-                    onMouseLeave={() => this.clearAnimation()}
-                    style={{ display:"flex" }}>
-                    <RoughNotation type={ animationType } 
-                        animationDuration="1200" 
-                        strokeWidth="4" 
-                        show={ ipbLine }>
-                            Insta-Poet-Bot
-                    </RoughNotation>
-                </a>
-                <a  className="nav"
-                    onMouseEnter={() => this.randAnimation("crs")} 
-                    onMouseLeave={() => this.clearAnimation()}
-                    style={{ display:"flex" }}>
-                    <RoughNotation type={ animationType } 
-                        animationDuration="1200" 
-                        strokeWidth="4" 
-                        show={ crsLine }>
-                            Cool Robot Syndicate
-                    </RoughNotation>
-                </a>
-                <a  className="nav"
-                    onMouseEnter={() => this.randAnimation("battle")} 
-                    onMouseLeave={() => this.clearAnimation()}
-                    style={{ display:"flex" }}>
-                    <RoughNotation type={ animationType } 
-                        animationDuration="1200" 
-                        strokeWidth="4" 
-                        show={ battleLine }>
-                            Battleship
-                    </RoughNotation>
-                </a>
-                <a  className="nav"
-                    onMouseEnter={() => this.randAnimation("site")} 
-                    onMouseLeave={() => this.clearAnimation()}
-                    style={{ display:"flex" }}>
-                    <RoughNotation type={ animationType } 
-                        animationDuration="1200" 
-                        strokeWidth="4" 
-                        show={ siteLine }>
-                            This Site
-                    </RoughNotation>
-                </a>
-
-                {/* <Tilt className="Tilt projects" 
-                options={{ max : 13, perspective : 1300, speed : 1300, scale : 1.05}}
-                style={{display : "flex", justifyContent : "center"}}>
-                    <div>
-                    <p style={{ color: color }}>LEARN Student Platform</p>
-                    <p style={{ color: "black" }}>lorem ipsum dolor sit amet</p>
-                    </div>
-                </Tilt> */}
+                </span>
             </div> }
         </div>
         )

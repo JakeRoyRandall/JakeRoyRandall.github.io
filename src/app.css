@@ -29,11 +29,37 @@
 
 a {
     color: inherit;
-    text-decoration: inherit;} 
+    text-decoration: inherit;
+    cursor: inherit;} 
 
-    /* .quote {
-font-family: felt-tip-roman, serif;
-font-weight: 800;
+.projects {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+}
+
+.project {
+    font-size: 67%;
+}
+
+.octocat {
+    height: 9vh;
+    vertical-align: sub;
+}
+
+.techs {
+    display: flex;
+    justify-content: space-between;
+}
+
+.tech {
+    height: 9vh;
+    vertical-align: sub;
+}
+
+/* .quote {
+    font-family: felt-tip-roman, serif;
+    font-weight: 800;
 } */
 
 /* Most Phones || 0px (0em) > 768px (48em) */
