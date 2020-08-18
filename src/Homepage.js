@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './app.css';
 import { RoughNotation } from 'react-rough-notation';
+import Projects from './projects'
 import LSP from './lsp'
 import IPB from './ipb'
 import CRS from './crs'
@@ -111,8 +112,6 @@ const colors = [
     , `#F4D759`, `#F3CD4F`, `#F1C246`
 ]
 
-// const learnStudentApp = "https://obscure-reaches-13754.herokuapp.com/"
-// const instaPoetBot= "https://insta-poet-bot.web.app/"
 class Homepage extends Component {
     constructor(props) {
         super(props)
@@ -145,7 +144,7 @@ class Homepage extends Component {
             animationType: "underline",
             hoverEnabled: true,
             element: 1,
-            project: null,
+            project: "projects",
         }
     }
 
@@ -296,7 +295,11 @@ class Homepage extends Component {
 
     modalSwitch = () => {
         this.clearAnimation()
-        this.setState({projectsModal: !this.state.projectsModal})
+        if (this.state.project !== "projects") {
+            this.setState({project: "projects"})
+        } else {
+            this.setState({projectsModal: !this.state.projectsModal})
+        }
     }
 
     projectView = (project) => {
@@ -318,19 +321,20 @@ class Homepage extends Component {
                 closeLine,
                 lspLine,
                 ipbLine,
-                crsLine,
-                battleLine,
                 siteLine,
-                animationType } = this.state
+                animationType,
+                project } = this.state
 
         return (
             <div className="background" style={{ backgroundColor: color }} onMouseMove={ this.colorChange }>
                 { !projectsModal && 
                 <div className="container">
-                    <h1 className="heading">hi i'm jake!</h1>
+                    <h1 className="heading text">hi i'm jake!</h1>
                     <p className="text">I'm a software engineer <span role="img" aria-label="man technologist">👨‍💻 </span>
                         living in <span role="img" aria-label="sun">☀️</span> San Diego. I make
-                        <a  href="/projects" target="_blank" className="bodyLinks"
+                        <span
+                            onClick={ this.modalSwitch }
+                            target="_blank" className="bodyLinks"
                             onMouseEnter={() => this.randAnimation("apps")} 
                             onMouseLeave={() => this.clearAnimation()}>
                             <RoughNotation type={ animationType === "circle" ? "underline" : "box" } 
@@ -339,7 +343,7 @@ class Homepage extends Component {
                                 show={ appsLine }>
                                     <span className="nobreak"> beautiful, functional apps </span>
                             </RoughNotation>
-                        </a>
+                        </span>
                         using modern technologies including: { tech }<br/><br/>
                         In my free time I teach <span role="img" aria-label="robot face">🤖</span> to
                         <a  href="https://insta-poet-bot.web.app/" target="_blank" 
@@ -355,9 +359,11 @@ class Homepage extends Component {
                             </RoughNotation>
                         </a>in a plot for 🌎 domination.
                     </p>
-                    <p>{ love }</p>
+                    <p className="text">{ love }</p>
                     <div className="nav">
-                        <span  onClick={ this.modalSwitch }
+                        <span  
+                            className="nav"
+                            onClick={ this.modalSwitch }
                             onMouseOver={() => this.randAnimation("projects")} 
                             onMouseLeave={() => this.clearAnimation()}>
                             <RoughNotation type={ animationType } 
@@ -367,7 +373,7 @@ class Homepage extends Component {
                                     projects
                             </RoughNotation>
                         </span>
-                        <a  href="https://github.com/JakeRoyRandall" target="_blank" 
+                            <a  href="https://github.com/JakeRoyRandall" target="_blank" 
                             rel="noopener noreferrer" className="nav"
                             onMouseOver={() => this.randAnimation("github")}
                             onMouseLeave={() => this.clearAnimation()}>
@@ -377,7 +383,7 @@ class Homepage extends Component {
                                 show={ githubLine }>
                                     github
                             </RoughNotation>
-                        </a>
+                            </a>
                         <a  href="https://www.linkedin.com/in/jake-r-randall" target="_blank" 
                             rel="noopener noreferrer" className="nav"
                             onMouseOver={() => this.randAnimation("linkedIn")} 
@@ -400,7 +406,7 @@ class Homepage extends Component {
                                     resume
                             </RoughNotation>
                         </a>
-                        <a  href="mailto:hello@jakerandall.me?subject=Website%20Contact" target="_blank"
+                        <span><a  href="mailto:hello@jakerandall.me?subject=Website%20Contact" target="_blank"
                             rel="noopener noreferrer" className="nav"
                             onMouseOver={() => this.randAnimation("contact")}
                             onMouseLeave={() => this.clearAnimation()}>
@@ -410,96 +416,37 @@ class Homepage extends Component {
                                 show={ contactLine} >
                                     contact
                             </RoughNotation>
-                        </a>
+                        </a></span>
                     </div>
                 </div>}
                 { projectsModal && 
-            <div className="container">
-                <div>
-                <p className="heading">
-                    <RoughNotation 
-                        type="underline"
-                        animationDuration="1800" 
-                        strokeWidth="7" 
-                        show="true">
-                            My Favorite Projects
-                    </RoughNotation>
-                </p>
-                <div className="projects">
-                    <span  className="nobreak"
-                        onClick={() => this.projectView("lsp")}
-                        onMouseOver={() => this.randAnimation("lsp")} 
-                        onMouseLeave={() => this.clearAnimation()}>
-                        <RoughNotation type={ animationType === "circle" ? "underline" : "box" } 
-                            animationDuration="1200" 
-                            strokeWidth="4" 
-                            show={ lspLine }>
-                                learn student platform
-                        </RoughNotation>
-                    </span>
-                    <span  className="nobreak"
-                        onClick={() => this.projectView("ipb") }
-                        onMouseOver={() => this.randAnimation("ipb")} 
-                        onMouseLeave={() => this.clearAnimation()}>
-                        <RoughNotation type={ animationType === "circle" ? "underline" : "box" } 
-                            animationDuration="1200" 
-                            strokeWidth="4" 
-                            show={ ipbLine }>
-                                Insta-Poet-Bot
-                        </RoughNotation>
-                    </span>
-                    {/* <span  className=""
-                        onClick={() => this.projectView("crs") }
-                        onMouseOver={() => this.randAnimation("crs")} 
-                        onMouseLeave={() => this.clearAnimation()}>
-                        <RoughNotation type={ animationType === "circle" ? "underline" : "box" } 
-                            animationDuration="1200" 
-                            strokeWidth="4" 
-                            show={ crsLine }>
-                                Cool Robot Syndicate
-                        </RoughNotation>
-                    </span>
-                    <span  className=""
-                        onClick={() => this.projectView("battleship") }
-                        onMouseOver={() => this.randAnimation("battleship")} 
-                        onMouseLeave={() => this.clearAnimation()}>
-                        <RoughNotation type={ animationType === "circle" ? "underline" : "box" } 
-                            animationDuration="1200" 
-                            strokeWidth="4" 
-                            show={ battleLine }>
-                                Battleship
-                        </RoughNotation>
-                    </span> */}
-                    <span  className=""
-                        onClick={() => this.projectView("site") }
-                        onMouseOver={() => this.randAnimation("site")} 
-                        onMouseLeave={() => this.clearAnimation()}>
-                        <RoughNotation type={ animationType === "circle" ? "underline" : "box" } 
-                            animationDuration="1200" 
-                            strokeWidth="4" 
-                            show={ siteLine }>
-                                This Site
-                        </RoughNotation>
-                    </span> 
-                </div>
-                    </div>
-                    {this.state.project === "lsp" && <LSP />}
-                    {this.state.project === "ipb" && <IPB />}
-                    {this.state.project === "crs" && <CRS />}
-                    {this.state.project === "battleship" && <Battleship />}
-                    {this.state.project === "site" && <Personal />}
-                <span  
-                    onClick={ this.modalSwitch }
-                    onMouseOver={() => this.randAnimation("close")} 
-                    onMouseLeave={() => this.clearAnimation()}>
-                    <RoughNotation type={ animationType } 
-                        animationDuration="1200" 
-                        strokeWidth="4" 
-                        show={ closeLine }>
-                            back
-                    </RoughNotation>
-                </span>
-            </div> }
+                
+                    <div className="container">
+                        {project === "projects"      &&
+                            <div className="project">
+                                <h1 className="subheading text">my favorite projects</h1>
+                                <span onClick={() => this.projectView("lsp")}>learn student platform</span>
+                                <span onClick={() => this.projectView("ipb")}>insta-poet-bot</span>
+                                <span onClick={() => this.projectView("site")}>this site</span>
+                            </div>
+                        }
+                        {project === "lsp"           && <LSP         />}
+                        {project === "ipb"           && <IPB         />}
+                        {project === "site"          && <Personal    />}
+                        <div className="nav">
+                            <span className="nav"  
+                            onClick={ this.modalSwitch }
+                            onMouseOver={() => this.randAnimation("close")} 
+                            onMouseLeave={() => this.clearAnimation()}>
+                                <RoughNotation type={ animationType } 
+                                    animationDuration="1200" 
+                                    strokeWidth="4" 
+                                    show={ closeLine }>
+                                        back
+                                </RoughNotation>
+                            </span>
+                        </div>
+                    </div> }
         </div>
         )
     }
