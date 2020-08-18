@@ -193,8 +193,8 @@ a {
     .container { max-width: 1220px; }}
 
 @media (min-device-width: 140em) {
-    .container { max-width: 1600px; }}
+    .container { max-width: 1400px; }}
 
 /* 4k displays || 2880px */
-@media (min-device-width: 180em) {
-    .container { max-width: 2400px; }}
+/* @media (min-device-width: 180em) {
+    .container { max-width: 1770px; }} */

@@ -18,7 +18,7 @@ const techs = [
     ,'Javascript'
     ,'Github'
     ,'TensorFlow'
-    ,'AWS Dynamo DB'
+    ,'DynamoDB'
     ,'HTML5 & CSS3'
     ,'Flask'
     ,'Ruby-on-Rails'
@@ -331,8 +331,8 @@ class Homepage extends Component {
                 <div className="container">
                     <h1 className="heading text">hi i'm jake!</h1>
                     <p className="text">I'm a software engineer <span role="img" aria-label="man technologist">👨‍💻 </span>
-                        living in <span role="img" aria-label="sun">☀️</span> San Diego. I make
-                        <span
+                        living in <span role="img" aria-label="sun">☀️</span> San Diego. I make beautiful, functional apps using modern technologies including: { tech }<br/><br/>
+                        {/* <span
                             onClick={ this.modalSwitch }
                             target="_blank" className="bodyLinks"
                             onMouseEnter={() => this.randAnimation("apps")} 
@@ -343,8 +343,8 @@ class Homepage extends Component {
                                 show={ appsLine }>
                                     <span className="nobreak"> beautiful, functional apps </span>
                             </RoughNotation>
-                        </span>
-                        using modern technologies including: { tech }<br/><br/>
+                        </span> */}
+                        {/* using modern technologies including: { tech }<br/><br/> */}
                         In my free time I teach <span role="img" aria-label="robot face">🤖</span> to
                         <a  href="https://insta-poet-bot.web.app/" target="_blank" 
                             rel="noopener noreferrer" className="bodyLinks" onMouseEnter={() => this.randAnimation("poetry")} onMouseLeave={() => this.clearAnimation("poetry")}>
@@ -352,7 +352,7 @@ class Homepage extends Component {
                             <span className="nobreak"> write poetry </span>
                             </RoughNotation>
                         </a>&
-                        <a  href="https://insta-poet-bot.web.app/" target="_blank" 
+                        <a  href="#" 
                             rel="noopener noreferrer" className="bodyLinks" onMouseEnter={() => this.randAnimation("sneaker")} onMouseLeave={() => this.clearAnimation("sneaker")}>
                             <RoughNotation type={ animationType === "circle" ? "underline" : "box"} animationDuration="1000" strokeWidth="4" show={ sneakerLine }>
                             <span className="nobreak"> trade sneakers </span>
