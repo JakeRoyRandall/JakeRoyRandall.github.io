@@ -361,7 +361,7 @@ class Homepage extends Component {
                     </p>
                     <p className="text">{ love }</p>
                     <div className="nav">
-                        <span  
+                        {/* <span  
                             className="nav"
                             onClick={ this.modalSwitch }
                             onMouseOver={() => this.randAnimation("projects")} 
@@ -372,8 +372,8 @@ class Homepage extends Component {
                                 show={ projectsLine }>
                                     projects
                             </RoughNotation>
-                        </span>
-                            <a  href="https://github.com/JakeRoyRandall" target="_blank" 
+                        </span> */}
+                        <a  href="https://github.com/JakeRoyRandall" target="_blank" 
                             rel="noopener noreferrer" className="nav"
                             onMouseOver={() => this.randAnimation("github")}
                             onMouseLeave={() => this.clearAnimation()}>
