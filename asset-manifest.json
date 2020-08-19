@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.d08edaf4.chunk.css",
-    "main.js": "/static/js/main.e5e3bc66.chunk.js",
-    "main.js.map": "/static/js/main.e5e3bc66.chunk.js.map",
+    "main.css": "/static/css/main.29341b80.chunk.css",
+    "main.js": "/static/js/main.572a956e.chunk.js",
+    "main.js.map": "/static/js/main.572a956e.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.a588c7d8.js",
     "runtime-main.js.map": "/static/js/runtime-main.a588c7d8.js.map",
     "static/js/2.fab6ec06.chunk.js": "/static/js/2.fab6ec06.chunk.js",
     "static/js/2.fab6ec06.chunk.js.map": "/static/js/2.fab6ec06.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.b3a085ab77c1ce26913d6721c19f2fdd.js": "/precache-manifest.b3a085ab77c1ce26913d6721c19f2fdd.js",
+    "precache-manifest.02047f2c35069c2758d86b7dedb43c29.js": "/precache-manifest.02047f2c35069c2758d86b7dedb43c29.js",
     "service-worker.js": "/service-worker.js",
-    "static/css/main.d08edaf4.chunk.css.map": "/static/css/main.d08edaf4.chunk.css.map",
+    "static/css/main.29341b80.chunk.css.map": "/static/css/main.29341b80.chunk.css.map",
     "static/js/2.fab6ec06.chunk.js.LICENSE.txt": "/static/js/2.fab6ec06.chunk.js.LICENSE.txt",
     "static/media/learn_students_logo.png": "/static/media/learn_students_logo.cfe3cbae.png",
     "static/media/octocat_logo.png": "/static/media/octocat_logo.0ba2aa20.png",
@@ -21,7 +21,7 @@
   "entrypoints": [
     "static/js/runtime-main.a588c7d8.js",
     "static/js/2.fab6ec06.chunk.js",
-    "static/css/main.d08edaf4.chunk.css",
-    "static/js/main.e5e3bc66.chunk.js"
+    "static/css/main.29341b80.chunk.css",
+    "static/js/main.572a956e.chunk.js"
   ]
 }
