@@ -19,7 +19,7 @@ const techs = [
     ,'Github'
     ,'TensorFlow'
     ,'DynamoDB'
-    ,'HTML5 & CSS3'
+    ,'HTML5'
     ,'Flask'
     ,'Ruby-on-Rails'
     ,'Material-UI'
@@ -30,13 +30,14 @@ const techs = [
     ,'AWS RDS'
     ,'Google Cloud'
     ,'Docker'
+    ,'CSS3'
     ,'jQuery'
     ,'SQL'
 ]
 
 const loves = [
     'I ❤️ making new friends 👋'
-    , 'I ❤️ competitive at-home Jeopardy'
+    , 'I ❤️ Jeopardy'
     , 'I ❤️ new music fridays'
     , 'I ❤️ obtuse philosophy'
     , 'I ❤️ rolling for initiative'
@@ -50,8 +51,8 @@ const loves = [
     , 'I ❤️ TabNine for VS Code'
     , 'I ❤️ the Tim Ferriss Show'
     , 'I ❤️ finishing a good book'
-    , 'I ❤️ brain breaking physics 🤯'
-    , 'I ❤️ watching Tiny Desk Concerts'
+    , 'I 🤯 mind-blowing physics'
+    , 'I ❤️ Tiny Desk Concerts'
     , 'I ❤️ a creamy milk stout'
     , 'I ❤️ Friedrich Nietzsche'
     , 'I ❤️ failing fast'
@@ -62,23 +63,22 @@ const loves = [
     , 'I ❤️ tidy code'
     , 'I ❤️ Anthony Bourdain (RIP)'
     , 'I ❤️ the movie Amadeus'
-    , 'I ❤️ Civilization by Sid Meier'
-    , 'I ❤️ a medium rare rack of lamb'
+    , "I ❤️ Sid Meier's Civilization"
+    , 'I ❤️ a rare rack of lamb'
     , 'I ❤️ sour & funky beers 🍻'
-    , 'I ❤️ the poems of E.E. Cummings'
+    , 'I ❤️ E.E. Cummings'
     , 'I ❤️ stand up comedy'
     , 'I ❤️ well commented code'
     , 'I ❤️ Led Zeppelin'
-    , 'I ❤️ Willy Wonka & the 🍫 Factory'
     , 'I ❤️ finding the right words'
     , 'I ❤️ a well matched debate'
-    , 'I ❤️ films by Quentin Terantino'
+    , 'I ❤️ 🎥 by Quentin Terantino'
     , 'I ❤️ chicken & waffles'  
-    , 'I ❤️ working with creative people 👩‍🎨'
+    , 'I ❤️ creative people 👩‍🎨'
     , 'I ❤️ watching TED talks'
     , 'I ❤️ discovering San Diego'
     , 'I ❤️ the XX'
-    , 'I ❤️ straightforward API documentation'
+    , 'I ❤️ great documentation'
     , 'I ❤️ the color yellow'
     , 'I ❤️ spicy tuna rolls 🍣'
     , 'I ❤️ Tyler the Creator'
@@ -88,7 +88,6 @@ const loves = [
     , 'I ❤️ the Strokes'
     , 'I ❤️ sriracha on hotdogs'
     , 'I ❤️ paintings by Dali'
-    , 'I ❤️ (insert something interesting here)'
     , 'I ❤️ a well designed UX'
 ]
 
@@ -306,7 +305,8 @@ class Homepage extends Component {
         this.setState({project: project})
     }
     render() {
-        const { color,
+        const { 
+                color,
                 tech,
                 love,
                 projectsModal,
@@ -323,7 +323,8 @@ class Homepage extends Component {
                 ipbLine,
                 siteLine,
                 animationType,
-                project } = this.state
+                project 
+            } = this.state
 
         return (
             <div className="background" style={{ backgroundColor: color }} onMouseMove={ this.colorChange }>
@@ -345,21 +346,40 @@ class Homepage extends Component {
                             </RoughNotation>
                         </span> */}
                         {/* using modern technologies including: { tech }<br/><br/> */}
-                        In my free time I teach <span role="img" aria-label="robot face">🤖</span> to
+                        In my free time I teach <span role="img" aria-label="robot face">🤖 </span>to
                         <a  href="https://insta-poet-bot.web.app/" target="_blank" 
                             rel="noopener noreferrer" className="bodyLinks" onMouseEnter={() => this.randAnimation("poetry")} onMouseLeave={() => this.clearAnimation("poetry")}>
                             <RoughNotation type={ animationType === "circle" ? "underline" : "box"} animationDuration="1000" strokeWidth="4" show={ poetryLine }>
                             <span className="nobreak"> write poetry </span>
                             </RoughNotation>
-                        </a>&
-                        <a  href="#" 
+                        </a>&<a  href="#" 
                             rel="noopener noreferrer" className="bodyLinks" onMouseEnter={() => this.randAnimation("sneaker")} onMouseLeave={() => this.clearAnimation("sneaker")}>
                             <RoughNotation type={ animationType === "circle" ? "underline" : "box"} animationDuration="1000" strokeWidth="4" show={ sneakerLine }>
                             <span className="nobreak"> trade sneakers </span>
                             </RoughNotation>
-                        </a>in a plot for 🌎 domination.
+                        </a>in a plot for 🌎 domination.<br/><br/>
+                        <span className="love mobile">{ love }</span>
+                        <div className="mlandscape">
+                            <p>
+                                <a  href="https://github.com/JakeRoyRandall" target="_blank">Check out my Github 👀</a> |
+                                <a  href="https://www.linkedin.com/in/jake-r-randall" target="_blank"> Connect 🤝 on LinkedIn </a> |
+                                {/* <span className="pspace">&nbsp;&nbsp;&nbsp;</span> */}
+                                <a  href="mailto:hello@jakerandall.me?subject=Website%20Contact" target="_blank"> Get In Touch! 💌</a>
+                            </p>
+                        </div>
+                        <div className="mportrait">
+                            <p>
+                                <a  href="https://github.com/JakeRoyRandall" target="_blank">Check out my Github 👈</a></p>
+                                <p>
+                                <a  href="https://www.linkedin.com/in/jake-r-randall" target="_blank">Connect 🤝 on LinkedIn </a>
+                                </p>
+                                <p>
+                                {/* <span className="pspace">&nbsp;&nbsp;&nbsp;</span> */}
+                                <a  href="mailto:hello@jakerandall.me?subject=Website%20Contact" target="_blank">✍️ Get In Touch! 💌</a>
+                            </p>
+                        </div>
+                        <span className="love nonMobile">{ love }</span>
                     </p>
-                    <p className="text">{ love }</p>
                     <div className="nav">
                         {/* <span  
                             className="nav"
@@ -419,7 +439,7 @@ class Homepage extends Component {
                         </a></span>
                     </div>
                 </div>}
-                { projectsModal && 
+                {/* { projectsModal && 
                 
                     <div className="container">
                         {project === "projects"      &&
@@ -446,7 +466,7 @@ class Homepage extends Component {
                                 </RoughNotation>
                             </span>
                         </div>
-                    </div> }
+                    </div> } */}
         </div>
         )
     }
