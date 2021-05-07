@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
 import './app.css';
 import { RoughNotation } from 'react-rough-notation';
-import Projects from './projects'
-import LSP from './lsp'
-import IPB from './ipb'
-import CRS from './crs'
-import Battleship from './battleship'
-import Personal from './personal'
 
 const techs = [
      'React'
     ,'AWS'
     ,'Ruby'
+    ,'Node'
     ,'Bootstrap'
     ,'MongoDB'
     ,'Firebase'
@@ -21,6 +16,7 @@ const techs = [
     ,'DynamoDB'
     ,'HTML5'
     ,'Flask'
+    ,'Express'
     ,'Ruby-on-Rails'
     ,'Material-UI'
     ,'Python'
@@ -28,6 +24,7 @@ const techs = [
     ,'Gatsby.js'
     ,'PHP'
     ,'AWS RDS'
+    ,'PyTorch'
     ,'Google Cloud'
     ,'Docker'
     ,'CSS3'
@@ -122,11 +119,6 @@ class Homepage extends Component {
             love: loves[0],
             loveIndex: 0,
             lastTime: 0,
-            projectsModal: false,
-            appsLine: false,
-            rubyLine: false,
-            pythonLine: false,
-            javascriptLine: false,
             poetryLine: false,
             sneakerLine: false,
             projectsLine: false,
@@ -134,12 +126,6 @@ class Homepage extends Component {
             linkedInLine: false,
             resumeLine: false,
             contactLine: false,
-            closeLine: false,
-            lspLine: false,
-            ipbLine: false,
-            crsLine: false,
-            battleLine: false,
-            siteLine: false,
             animationType: "underline",
             hoverEnabled: true,
             element: 1,
@@ -310,28 +296,19 @@ class Homepage extends Component {
                 tech,
                 love,
                 projectsModal,
-                appsLine,
-                poetryLine,
-                sneakerLine, 
-                projectsLine, 
                 githubLine, 
                 linkedInLine, 
                 resumeLine, 
                 contactLine, 
-                closeLine,
-                lspLine,
-                ipbLine,
-                siteLine,
                 animationType,
-                project 
             } = this.state
 
         return (
             <div className="background" style={{ backgroundColor: color }} onMouseMove={ this.colorChange }>
                 { !projectsModal && 
                 <div className="container">
-                    <h1 className="heading text">hi i'm jake!</h1>
-                    <p className="text">I'm a software engineer <span role="img" aria-label="man technologist">👨‍💻 </span>
+                    <h1 className="heading">hi i'm jake!</h1>
+                    <div className="text">I'm a software engineer <span role="img" aria-label="man technologist">👨‍💻 </span>
                         living in <span role="img" aria-label="sun">☀️</span> San Diego. I make beautiful, functional apps using modern technologies including: { tech }<br/><br/>
                         {/* <span
                             onClick={ this.modalSwitch }
@@ -346,41 +323,56 @@ class Homepage extends Component {
                             </RoughNotation>
                         </span> */}
                         {/* using modern technologies including: { tech }<br/><br/> */}
-                        In my free time I teach <span role="img" aria-label="robot face">🤖 </span>to
-                        <a  href="https://insta-poet-bot.web.app/" target="_blank" 
+                        In my free time I teach <span role="img" aria-label="robot face emoji">🤖 </span>
+                        to write poetry and paint masterpieces in a plot for 
+                        <span role="img" aria-label="earth emoji"> 🌎 </span>domination.<br/><br/>
+                        {/* <a  href="https://insta-poet-bot.web.app/" target="_blank" 
                             rel="noopener noreferrer" className="bodyLinks" onMouseEnter={() => this.randAnimation("poetry")} onMouseLeave={() => this.clearAnimation("poetry")}>
                             <RoughNotation type={ animationType === "circle" ? "underline" : "box"} animationDuration="1000" strokeWidth="4" show={ poetryLine }>
-                            <span className="nobreak"> write poetry </span>
+                            <span className="nobreak"> write poetry</span>
                             </RoughNotation>
                         </a>&<a  href="#" 
                             rel="noopener noreferrer" className="bodyLinks" onMouseEnter={() => this.randAnimation("sneaker")} onMouseLeave={() => this.clearAnimation("sneaker")}>
                             <RoughNotation type={ animationType === "circle" ? "underline" : "box"} animationDuration="1000" strokeWidth="4" show={ sneakerLine }>
-                            <span className="nobreak"> trade sneakers </span>
+                            <span className="nobreak"> paint masterpieces </span>
                             </RoughNotation>
-                        </a>in a plot for 🌎 domination.<br/><br/>
+                        </a>in a plot for 🌎 domination.<br/><br/> */}
                         <span className="love mobile">{ love }</span>
                         <div className="mlandscape">
                             <p>
-                                <a  href="https://github.com/JakeRoyRandall" target="_blank">Check out my Github 👀</a> |
-                                <a  href="https://www.linkedin.com/in/jake-r-randall" target="_blank"> Connect 🤝 on LinkedIn </a> |
+                                <a  href="https://github.com/JakeRoyRandall" target="_blank" rel="noopener noreferrer">
+                                    Check out my Github <span role="img" aria-label="eyes emoji">👀</span>
+                                </a>{' | '}
+                                <a  href="https://www.linkedin.com/in/jake-r-randall" target="_blank" rel="noopener noreferrer">
+                                    Connect <span role="img" aria-label="handshake emoji">🤝</span> on LinkedIn 
+                                </a>{' | '}
                                 {/* <span className="pspace">&nbsp;&nbsp;&nbsp;</span> */}
-                                <a  href="mailto:hello@jakerandall.me?subject=Website%20Contact" target="_blank"> Get In Touch! 💌</a>
+                                <a  href="mailto:hello@jakerandall.me?subject=Website%20Contact" target="_blank" rel="noopener noreferrer">
+                                     Get In Touch! <span role="img" aria-label="envelope emoji">💌</span>
+                                </a>
                             </p>
                         </div>
                         <div className="mportrait">
                             <p>
-                                <a  href="https://github.com/JakeRoyRandall" target="_blank">Check out my Github 👈</a></p>
-                                <p>
-                                <a  href="https://www.linkedin.com/in/jake-r-randall" target="_blank">Connect 🤝 on LinkedIn </a>
-                                </p>
-                                <p>
+                                <a  href="https://github.com/JakeRoyRandall" target="_blank" rel="noopener noreferrer">
+                                    Check out my Github <span role="img" aria-label="pointing emoji">👈</span>
+                                </a>
+                            </p>
+                            <p>
+                                <a  href="https://www.linkedin.com/in/jake-r-randall" target="_blank" rel="noopener noreferrer">
+                                    Connect <span role="img" aria-label="handshake emoji">🤝</span> on LinkedIn
+                                </a>
+                            </p>
+                            <p>
                                 {/* <span className="pspace">&nbsp;&nbsp;&nbsp;</span> */}
-                                <a  href="mailto:hello@jakerandall.me?subject=Website%20Contact" target="_blank">✍️ Get In Touch! 💌</a>
+                                <a  href="mailto:hello@jakerandall.me?subject=Website%20Contact" target="_blank" rel="noopener noreferrer">
+                                    <span role="img" aria-label="writing emoji">✍️</span> Get In Touch! <span role="img" aria-label="envelope emoji">💌</span>
+                                </a>
                             </p>
                         </div>
                         <span className="love nonMobile">{ love }</span>
-                    </p>
-                    <div className="nav">
+                    </div>
+                    <p className="nav">
                         {/* <span  
                             className="nav"
                             onClick={ this.modalSwitch }
@@ -437,7 +429,7 @@ class Homepage extends Component {
                                     contact
                             </RoughNotation>
                         </a></span>
-                    </div>
+                    </p>
                 </div>}
                 {/* { projectsModal && 
                 
