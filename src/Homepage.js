@@ -4,17 +4,26 @@ import { RoughNotation } from 'react-rough-notation';
 
 const techs = [
      'React'
+    ,'Typescript'
+    ,'Supabase'
+    ,'Prisma'
+    ,'Next JS'
+    ,'GDScript'
+    ,'Shadcn/ui'
+    ,'Tailwind'
     ,'AWS'
     ,'Ruby'
+    ,'Solana'
     ,'Node'
     ,'Bootstrap'
     ,'MongoDB'
     ,'Firebase'
     ,'Javascript'
     ,'Github'
-    ,'TensorFlow'
     ,'DynamoDB'
     ,'HTML5'
+    ,'JSON'
+    ,'ZOD'
     ,'Flask'
     ,'Express'
     ,'Ruby-on-Rails'
@@ -24,7 +33,6 @@ const techs = [
     ,'Gatsby.js'
     ,'PHP'
     ,'AWS RDS'
-    ,'PyTorch'
     ,'Google Cloud'
     ,'Docker'
     ,'CSS3'
@@ -33,32 +41,33 @@ const techs = [
 ]
 
 const loves = [
-    'I ❤️ making new friends 👋'
+      'I ❤️ making new friends 👋'
     , 'I ❤️ Jeopardy'
     , 'I ❤️ new music fridays'
     , 'I ❤️ obtuse philosophy'
-    , 'I ❤️ rolling for initiative'
+    , 'I ❤️ rolling for initiative 🎲'
     , 'I ❤️ my little sister'
+    , 'I ❤️ crazy entrepreneurs 🏴‍☠️'
+    , 'I ❤️ the Tim Ferriss Show'
+    , 'I ❤️ finishing a good book 📖'
+    , 'I ❤️ Baldur\'s Gate 3'
     , 'I ❤️ biographies'
     , 'I ❤️ crazy-hot chicken wings'
-    , 'I ❤️ hiking lake Calavera 🌋'
     , 'I ❤️ Modest Mouse'
-    , 'I ❤️ Good Eats'
     , 'I ❤️ going to art museums'
-    , 'I ❤️ TabNine for VS Code'
-    , 'I ❤️ the Tim Ferriss Show'
-    , 'I ❤️ finishing a good book'
     , 'I 🤯 mind-blowing physics'
     , 'I ❤️ Tiny Desk Concerts'
+    , 'I ❤️ my girlfriend heather'
     , 'I ❤️ a creamy milk stout'
-    , 'I ❤️ Friedrich Nietzsche'
+    , 'I ❤️ learning new tech'
     , 'I ❤️ failing fast'
+    , 'I ❤️ making chili 🍲'
     , 'I ❤️ the Beatles'
     , 'I ❤️ biking in the city 🚴‍♂️'
     , 'I ❤️ building with Legos'
     , 'I ❤️ trying new things'
+    , 'I ❤️ creative people 👩‍🎨'
     , 'I ❤️ tidy code'
-    , 'I ❤️ Anthony Bourdain (RIP)'
     , 'I ❤️ the movie Amadeus'
     , "I ❤️ Sid Meier's Civilization"
     , 'I ❤️ a rare rack of lamb'
@@ -69,22 +78,19 @@ const loves = [
     , 'I ❤️ Led Zeppelin'
     , 'I ❤️ finding the right words'
     , 'I ❤️ a well matched debate'
-    , 'I ❤️ 🎥 by Quentin Terantino'
+    , 'I ❤️ Quentin Terantino 🎥'
     , 'I ❤️ chicken & waffles'  
-    , 'I ❤️ creative people 👩‍🎨'
     , 'I ❤️ watching TED talks'
-    , 'I ❤️ discovering San Diego'
-    , 'I ❤️ the XX'
+    , 'I ❤️ discovering world 🌏'
     , 'I ❤️ great documentation'
     , 'I ❤️ the color yellow'
     , 'I ❤️ spicy tuna rolls 🍣'
     , 'I ❤️ Tyler the Creator'
-    , 'I ❤️ crazy entrepreneurs'
     , 'I ❤️ YouTube University 🎓'
-    , 'I ❤️ strong coffee'
     , 'I ❤️ the Strokes'
     , 'I ❤️ sriracha on hotdogs'
     , 'I ❤️ paintings by Dali'
+    , 'I ❤️ strong coffee ☕'
     , 'I ❤️ a well designed UX'
 ]
 
@@ -308,35 +314,14 @@ class Homepage extends Component {
                 { !projectsModal && 
                 <div className="container">
                     <h1 className="heading">hi i'm jake!</h1>
-                    <div className="text">I'm a software engineer <span role="img" aria-label="man technologist">👨‍💻 </span>
-                        living in <span role="img" aria-label="sun">☀️</span> San Diego. I make beautiful, functional apps using modern technologies including: { tech }<br/><br/>
-                        {/* <span
-                            onClick={ this.modalSwitch }
-                            target="_blank" className="bodyLinks"
-                            onMouseEnter={() => this.randAnimation("apps")} 
-                            onMouseLeave={() => this.clearAnimation()}>
-                            <RoughNotation type={ animationType === "circle" ? "underline" : "box" } 
-                                animationDuration="1200" 
-                                strokeWidth="4"
-                                show={ appsLine }>
-                                    <span className="nobreak"> beautiful, functional apps </span>
-                            </RoughNotation>
-                        </span> */}
-                        {/* using modern technologies including: { tech }<br/><br/> */}
-                        In my free time I teach <span role="img" aria-label="robot face emoji">🤖 </span>
+                    <div className="text">I'm a full stack dev <span role="img" aria-label="man technologist">👨‍💻 </span>
+                        building fun & functional experiences using modern technologies including: { tech }<br/><br/>
+                        {/* In my free time I teach <span role="img" aria-label="robot face emoji">🤖 </span>
                         to write poetry and paint masterpieces in a plot for 
-                        <span role="img" aria-label="earth emoji"> 🌎 </span>domination.<br/><br/>
-                        {/* <a  href="https://insta-poet-bot.web.app/" target="_blank" 
-                            rel="noopener noreferrer" className="bodyLinks" onMouseEnter={() => this.randAnimation("poetry")} onMouseLeave={() => this.clearAnimation("poetry")}>
-                            <RoughNotation type={ animationType === "circle" ? "underline" : "box"} animationDuration="1000" strokeWidth="4" show={ poetryLine }>
-                            <span className="nobreak"> write poetry</span>
-                            </RoughNotation>
-                        </a>&<a  href="#" 
-                            rel="noopener noreferrer" className="bodyLinks" onMouseEnter={() => this.randAnimation("sneaker")} onMouseLeave={() => this.clearAnimation("sneaker")}>
-                            <RoughNotation type={ animationType === "circle" ? "underline" : "box"} animationDuration="1000" strokeWidth="4" show={ sneakerLine }>
-                            <span className="nobreak"> paint masterpieces </span>
-                            </RoughNotation>
-                        </a>in a plot for 🌎 domination.<br/><br/> */}
+                        <span role="img" aria-label="earth emoji"> 🌎 </span>domination.<br/><br/> */}
+                        In my free time I'm making a horde-survival game staring a goblin <span role="img" aria-label="frog emoji">🐸 </span> hero & an evil wizard 
+                        <span role="img" aria-label="Man Mage emoji">🧙‍♂️</span>
+                        <br/><br/>
                         <span className="love mobile">{ love }</span>
                         <div className="mlandscape">
                             <p>
@@ -346,7 +331,6 @@ class Homepage extends Component {
                                 <a  href="https://www.linkedin.com/in/jake-r-randall" target="_blank" rel="noopener noreferrer">
                                     Connect <span role="img" aria-label="handshake emoji">🤝</span> on LinkedIn 
                                 </a>{' | '}
-                                {/* <span className="pspace">&nbsp;&nbsp;&nbsp;</span> */}
                                 <a  href="mailto:hello@jakerandall.me?subject=Website%20Contact" target="_blank" rel="noopener noreferrer">
                                      Get In Touch! <span role="img" aria-label="envelope emoji">💌</span>
                                 </a>
@@ -364,7 +348,6 @@ class Homepage extends Component {
                                 </a>
                             </p>
                             <p>
-                                {/* <span className="pspace">&nbsp;&nbsp;&nbsp;</span> */}
                                 <a  href="mailto:hello@jakerandall.me?subject=Website%20Contact" target="_blank" rel="noopener noreferrer">
                                     <span role="img" aria-label="writing emoji">✍️</span> Get In Touch! <span role="img" aria-label="envelope emoji">💌</span>
                                 </a>
